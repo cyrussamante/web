@@ -4,6 +4,7 @@ import { useTheme } from "../context/ThemeContext";
 function NavBar() {
     
     const { toggleTheme } = useTheme();
+    
     return (
         <nav className="flex justify-between align-middle p-4 bg-gray-200 dark:bg-gray-800">
             <div className="flex space-x-4 dark:text-white">
