@@ -1,7 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 import { useTheme } from "../context/ThemeContext";
 import Switch from "./Switch";
+
+const links = [
+    { name: "Home", path: "/" },
+    { name: "Projects", path: "/projects" },
+    { name: "Experience", path: "/experience" },
+];
+
+function getNavLinkClass(isActive: boolean) {
+    return `border-b border-transparent transition-colors font-medium ${
+        isActive ? "border-accent text-accent" : "text-secondary hover:text-accent"
+    }`;
+}
 
 function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,20 +23,27 @@ function NavBar() {
         <nav className="border-b border-border bg-page py-4 text-foreground transition-colors duration-200">
             <div className="relative mx-auto grid w-full max-w-7xl grid-cols-2 items-center px-6 sm:px-8 md:grid-cols-3 lg:px-12">
                 <div>
-                    <Link to="/" className="whitespace-nowrap text-lg font-bold text-foreground">
+                    <NavLink to="/" className="whitespace-nowrap text-lg font-extrabold text-foreground">
                         Cyruss Amante
-                    </Link>
+                    </NavLink>
                 </div>
-                <div className="hidden items-center justify-self-center space-x-6 text-sm text-secondary md:flex">
-                    <Link className="transition-colors hover:text-accent" to="/">
-                        Home
-                    </Link>
-                    <Link className="transition-colors hover:text-accent" to="/projects">
-                        Projects
-                    </Link>
-                    <Link className="transition-colors hover:text-accent" to="/experience">
-                        Experience
-                    </Link>
+                <div
+                    id="mobile-navigation"
+                    className={`absolute inset-x-0 top-full z-10 flex-col border-b border-border bg-page px-6 py-3 text-sm text-secondary shadow-lg ${
+                        isMenuOpen ? "flex" : "hidden"
+                    } md:static md:col-start-2 md:flex md:flex-row md:items-center md:justify-self-center md:space-x-6 md:border-0 md:bg-transparent md:px-0 md:py-0 md:shadow-none`}
+                >
+                    {links.map(({ name, path }) => (
+                        <NavLink
+                            key={name}
+                            to={path}
+                            end={path === "/"}
+                            className={({ isActive }) => `${getNavLinkClass(isActive)} py-3 md:py-2`}
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            {name}
+                        </NavLink>
+                    ))}
                 </div>
                 <div className="flex items-center justify-self-end space-x-4">
                     <Switch onChange={toggleTheme} checked={value === "dark"} />
@@ -42,22 +61,6 @@ function NavBar() {
                         <span className="h-0.5 w-5 bg-current" />
                     </button>
                 </div>
-                {isMenuOpen && (
-                    <div
-                        id="mobile-navigation"
-                        className="absolute inset-x-0 top-full z-10 flex flex-col border-b border-border bg-page px-6 py-3 text-sm text-secondary shadow-lg md:hidden"
-                    >
-                        <Link className="py-3 hover:text-accent" to="/" onClick={() => setIsMenuOpen(false)}>
-                            Home
-                        </Link>
-                        <Link className="py-3 hover:text-accent" to="/projects" onClick={() => setIsMenuOpen(false)}>
-                            Projects
-                        </Link>
-                        <Link className="py-3 hover:text-accent" to="/experience" onClick={() => setIsMenuOpen(false)}>
-                            Experience
-                        </Link>
-                    </div>
-                )}
             </div>
         </nav>
     );
