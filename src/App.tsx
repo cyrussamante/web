@@ -13,14 +13,13 @@ function App() {
     <>
       <NavBar />
       <div className="min-h-screen mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12">
-
         <Routes>
           <Route path="/" element={<Home />} /> 
           <Route path="/projects" element={<Projects />} /> 
           <Route path="/experience" element={<Experience />} /> 
         </Routes>
-        <Footer />
       </div>
+      <Footer />
     </>
   )
 }

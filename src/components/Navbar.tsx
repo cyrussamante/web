@@ -10,7 +10,7 @@ const links = [
 ];
 
 function getNavLinkClass(isActive: boolean) {
-    return `border-b border-transparent transition-colors font-medium ${
+    return `border-b border-transparent transition-colors duration-300 ease font-medium ${
         isActive ? "border-accent text-accent" : "text-secondary hover:text-accent"
     }`;
 }
@@ -20,7 +20,7 @@ function NavBar() {
     const { value, toggleTheme } = useTheme();
 
     return (
-        <nav className="border-b border-border bg-page py-4 text-foreground transition-colors duration-200">
+        <nav className="border-b border-border bg-page py-4 text-foreground transition-colors duration-300 ease">
             <div className="relative mx-auto grid w-full max-w-7xl grid-cols-2 items-center px-6 sm:px-8 md:grid-cols-3 lg:px-12">
                 <div>
                     <NavLink to="/" className="whitespace-nowrap text-lg font-extrabold text-foreground">
