@@ -3,7 +3,7 @@ import { createContext, useContext } from "react";
 
 interface ThemeContextType {
     value: Theme;
-    setTheme: (theme: Theme) => void;
+    toggleTheme: () => void;
 }
 
 type Theme = "light" | "dark";
@@ -27,7 +27,7 @@ function ThemeProvider({children}: {children: ReactNode}) {
     }, [theme])
 
     return (
-        <ThemeContext.Provider value={{ value: theme, setTheme: toggleTheme }}>
+        <ThemeContext.Provider value={{ value: theme, toggleTheme }}>
             {children}
         </ThemeContext.Provider>
     )
