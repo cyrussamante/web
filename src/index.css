@@ -26,9 +26,6 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: var(--color-page);
-  color: var(--color-foreground);
-  transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

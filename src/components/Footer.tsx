@@ -1,8 +1,9 @@
 import { Link } from "react-router";
+import ActionLink from "./ActionLink";
 
 function Footer() {
     return (
-        <footer className="border-t border-border bg-page py-8 text-foreground transition-colors duration-300 ease sm:py-10">
+        <footer className="border-t border-border py-8 text-foreground transition-colors duration-300 ease sm:py-10">
             <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-x-8 gap-y-6 px-6 sm:grid-cols-2 sm:px-8 lg:px-12">
                 <div>
                     <p className="font-semibold">Let's build something.</p>
@@ -16,7 +17,7 @@ function Footer() {
                     <Link to={"mailto:contact@cyrussamante.com"}>Email</Link>
                 </div>
                 <div className="text-sm font-medium text-accent">
-                    Get in Touch
+                    <ActionLink href="mailto:contact@cyrussamante.com" variant="text" showArrow={true}>Get in Touch</ActionLink>
                 </div>
                 <div className="text-xs text-muted sm:text-right">
                     &copy; {new Date().getFullYear()} Cyruss Amante
