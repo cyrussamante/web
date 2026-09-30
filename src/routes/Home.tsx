@@ -27,8 +27,7 @@ function Home() {
                         Hi, I&apos;m <span className="text-accent theme-transition">Cyruss.</span>
                     </h1>
                     <p className="mt-5 max-w-xl text-sm leading-6 text-secondary theme-transition sm:text-base sm:leading-7">
-                        I&apos;m a software developer based in the GTA, focused on building clean, efficient, and scalable applications.
-                        I enjoy turning ideas into real products and constantly learning new technologies along the way.
+                        I&apos;m a GTA-based software developer who turns complex problems into reliable software. I combine full-stack development, testing, and AI-assisted tools to build practical solutions and improve how software is delivered.
                     </p>
                     <div className="mt-6 flex flex-wrap items-center gap-4">
                         <ActionLink href="/projects" showArrow>
@@ -68,7 +67,7 @@ function Home() {
 
                     </div>
                     <p className="max-w-xl text-sm leading-6 text-secondary theme-transition md:border-l md:border-border md:pl-8">
-                        Focused on software engineering, data structures and algorithms, and distributed systems. Built a strong foundation in problem solving and creating efficient, scalable software solutions.
+                        My Software Engineering degree at McMaster strengthened my foundation in programming, algorithms, software design, and testing. It taught me to approach complex technical problems methodically and build software with reliability, maintainability, and real-world needs in mind.
                     </p>
                 </div>
             </section>
@@ -87,7 +86,7 @@ function Home() {
                     </ActionLink>
                 </div>
                 <p className="mt-4 max-w-2xl text-sm leading-6 text-secondary theme-transition">
-                    A selection of projects I&apos;ve worked on, from interactive tools to applications.
+                    Here are a few projects I&apos;ve built, from robotics and visualization tools to mobile and web apps.
                 </p>
                 <div className="mt-3">
                     {featuredProjects.map((project, index) => (

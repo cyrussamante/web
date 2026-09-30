@@ -71,14 +71,14 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
                 requestClose();
             }}
             onClick={handleBackdropClick}
-            className="m-auto max-h-[min(92dvh,60rem)] w-[min(94vw,64rem)] max-w-none overflow-y-auto rounded-2xl border border-border bg-page p-0 text-foreground shadow-2xl backdrop:bg-black/70 theme-transition"
+            className="m-auto max-h-[min(92dvh,60rem)] w-[min(94vw,64rem)] max-w-none overflow-y-auto rounded-2xl border border-border bg-surface p-0 text-foreground shadow-2xl backdrop:bg-black/70 theme-transition"
         >
             <div className="relative p-6 pt-16 sm:p-8 sm:pt-16 lg:p-10 lg:pt-10">
                 <button
                     type="button"
                     onClick={requestClose}
                     aria-label="Close project details"
-                    className="absolute right-5 top-5 z-10 grid h-10 w-10 cursor-pointer place-items-center rounded-full border border-border bg-page text-secondary theme-transition hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-6 sm:top-6 lg:right-8 lg:top-8"
+                    className="absolute right-5 top-5 z-10 grid h-10 w-10 cursor-pointer place-items-center rounded-full border border-border bg-surface text-secondary theme-transition hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-6 sm:top-6 lg:right-8 lg:top-8"
                 >
                     <span aria-hidden="true" className="text-xl leading-none">×</span>
                 </button>

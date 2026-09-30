@@ -75,6 +75,54 @@
   transform: translateY(0);
 }
 
+.mobile-nav-panel {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-0.5rem);
+  visibility: hidden;
+  transition: none;
+}
+
+.mobile-nav-panel[data-animate="true"] {
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease,
+    visibility 0s linear 200ms;
+}
+
+.mobile-nav-panel[data-open="true"] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.mobile-nav-panel[data-open="true"][data-animate="true"] {
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease,
+    visibility 0s;
+}
+
+@media (min-width: 768px) {
+  .mobile-nav-panel,
+  .mobile-nav-panel[data-open="true"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    visibility: visible;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-nav-panel,
+  .mobile-nav-panel[data-animate="true"],
+  .mobile-nav-panel[data-open="true"],
+  .mobile-nav-panel[data-open="true"][data-animate="true"] {
+    transition: none !important;
+  }
+}
+
 @utility project-card-motion {
   transition:
     color 300ms ease-out,
@@ -105,6 +153,7 @@ dialog[open][data-closing]::backdrop {
   .theme-transition,
   .motion-fade-up,
   .scroll-reveal,
+  .mobile-nav-panel,
   .project-card-motion,
   dialog[open],
   dialog[open]::backdrop,
@@ -117,6 +166,13 @@ dialog[open][data-closing]::backdrop {
   .scroll-reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .mobile-nav-panel,
+  .mobile-nav-panel[data-open="true"],
+  .mobile-nav-panel[data-animate="true"],
+  .mobile-nav-panel[data-open="true"][data-animate="true"] {
+    transition: none;
   }
 }
 

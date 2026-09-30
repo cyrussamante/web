@@ -42,7 +42,7 @@ function OrganizationTimeline({ organization }: OrganizationTimelineProps) {
                                     {role.context}
                                 </p>
                             )}
-                            <ul className="mt-4 space-y-2.5">
+                            <ul className="mt-4 list-disc space-y-2.5 pl-5 marker:text-accent">
                                 {role.details.map((detail) => (
                                     <li
                                         key={detail}

@@ -20,8 +20,8 @@ export interface ExperienceOrganization {
 }
 
 const introductionToProgrammingTaDetails = [
-    "Led weekly Python tutorials, explaining core programming concepts and helping students debug their work.",
-    "Assessed tests and exams, providing focused feedback to reinforce learning and guide improvement.",
+    "Led weekly Python tutorials, breaking down programming concepts and guiding students through debugging.",
+    "Evaluated tests and exams, giving clear, actionable feedback to support student progress.",
 ];
 
 export const professionalExperience: ExperienceOrganization[] = [
@@ -36,8 +36,8 @@ export const professionalExperience: ExperienceOrganization[] = [
                 sortDate: "2025-07",
                 context: "Etobicoke, Ontario | Hybrid",
                 details: [
-                    "One of the first developers on ADP Workforce Now On the Go Next Gen, contributing to its launch and building new features for mobile HR and payroll workflows.",
-                    "Support production operations by investigating reported issues, analyzing application behavior, and contributing to deployment workflows.",
+                    "One of the first developers on ADP Workforce Now On the Go Next Gen; contributed to its launch and 10+ new features, simplifying complex practitioner views and workflows for small-business owners.",
+                    "Support monthly major releases and production operations by investigating reported issues, analyzing application behavior, and contributing to deployment workflows.",
                 ],
                 spotlight: {
                     title: "AI engineering workflows",
@@ -67,8 +67,8 @@ export const professionalExperience: ExperienceOrganization[] = [
                 sortDate: "2026-01",
                 context: "Mississauga, Ontario | Hybrid",
                 details: [
-                    "Plan and publish promotional and behind-the-scenes content for theatre productions, coordinating with cast and production teams.",
-                    "Produce short-form video and rehearsal coverage; one organic video surpassed 40,000 views.",
+                    "Create and publish promotional and behind-the-scenes social content in partnership with cast and production teams.",
+                    "Produce short-form video and rehearsal coverage, including an organic video that reached 40,000+ views.",
                 ],
             },
             {
@@ -78,8 +78,8 @@ export const professionalExperience: ExperienceOrganization[] = [
                 sortDate: "2025-08",
                 context: "Mississauga, Ontario | On-site",
                 details: [
-                    "Coach student performers on scenes, blocking, and rehearsal preparation for productions including Mean Girls JR.",
-                    "Partner with directors and production staff to keep rehearsals organized and foster an inclusive, collaborative environment.",
+                    "Coach student performers on scenes, blocking, and rehearsal readiness for productions such as Mean Girls JR.",
+                    "Coordinate with directors and production staff to support efficient rehearsals and a collaborative, inclusive cast environment.",
                 ],
             },
         ],
@@ -103,8 +103,8 @@ export const professionalExperience: ExperienceOrganization[] = [
                 sortDate: "2024-09",
                 context: "Software Requirements and Security Considerations",
                 details: [
-                    "Led weekly tutorials for 50+ students, connecting software requirements and security concepts to practical case studies.",
-                    "Evaluated projects and coached students on requirements engineering and technical documentation.",
+                    "Led weekly tutorials for 50+ students, translating software requirements and security principles into practical case studies.",
+                    "Reviewed team projects and coached students on requirements analysis and clear technical documentation.",
                 ],
             },
             {
@@ -114,8 +114,8 @@ export const professionalExperience: ExperienceOrganization[] = [
                 sortDate: "2024-09",
                 context: "FPGA and digital systems labs",
                 details: [
-                    "Guided students implementing and debugging VHDL and Verilog designs on FPGA development boards.",
-                    "Taught digital design fundamentals, including state machines, memory-mapped I/O, and hardware/software interfaces; assessed lab work and midterms.",
+                    "Helped students build and debug VHDL and Verilog designs on FPGA development boards.",
+                    "Explained state machines, memory-mapped I/O, and hardware/software interfaces, while assessing lab work and midterms.",
                 ],
             },
         ],
@@ -131,9 +131,9 @@ export const professionalExperience: ExperienceOrganization[] = [
                 sortDate: "2024-05",
                 context: "Etobicoke, Ontario",
                 details: [
-                    "Developed ADP Workforce Now features using Java, Spring Boot, React, and Maven.",
-                    "Investigated client-reported production issues with Splunk, monitoring performance and tracing application errors.",
-                    "Supported deployments and automated build and release workflows with Jenkins.",
+                    "Built ADP Workforce Now features across the Java/Spring Boot and React stack, using Maven in the development workflow.",
+                    "Used Splunk to investigate client-reported production issues, trace application errors, and monitor service performance.",
+                    "Supported application deployments and automated build and release workflows through Jenkins.",
                 ],
                 skills: ["Java", "React", "Maven", "Spring Boot", "Splunk", "Jenkins"],
             },
@@ -150,8 +150,8 @@ export const professionalExperience: ExperienceOrganization[] = [
                 sortDate: "2023-09",
                 context: "Hamilton, Ontario",
                 details: [
-                    "Designed and iterated 10+ Figma assets for 5+ student events, maintaining consistent branding across campaigns.",
-                    "Contributed to reported gains of 20% in event engagement and 30% in campus brand visibility.",
+                    "Designed 10+ Figma assets for 5+ student events, refining campaign visuals while maintaining consistent club branding.",
+                    "Contributed to reported increases of 20% in event engagement and 30% in campus brand visibility.",
                 ],
                 skills: ["Figma", "Visual Design", "Branding", "Content Creation"],
             },
@@ -168,9 +168,9 @@ export const professionalExperience: ExperienceOrganization[] = [
                 sortDate: "2020-02",
                 context: "Mississauga, Ontario",
                 details: [
-                    "Maintained IT asset records for 1,500 employees and 2,500 devices, improving data accuracy and accessibility.",
-                    "Resolved technology issues, contributing to a reported 13% reduction in downtime.",
-                    "Implemented component and device upgrades that contributed to a reported 20% improvement in system performance.",
+                    "Maintained IT asset records covering 1,500 employees and 2,500 devices, strengthening data accuracy and access to inventory information.",
+                    "Resolved technical issues, contributing to a reported 13% reduction in downtime.",
+                    "Implemented hardware and component upgrades that contributed to a reported 20% improvement in system performance.",
                 ],
                 skills: ["IT Asset Management", "Technical Support", "Troubleshooting", "Technology Research"],
             },

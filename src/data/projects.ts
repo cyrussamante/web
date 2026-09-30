@@ -32,7 +32,7 @@ export const projects: Project[] = [
     {
         id: "renewable-technology-challenge",
         title: "Renewable Technology Challenge",
-        description: "Evaluated materials and mechanical performance for a wind-turbine blade design.",
+        description: "Compared blade materials and simulated deflection to recommend a wind-turbine design for local conditions in Guatemala.",
         category: "Other",
         year: 2021,
         dateRange: "Sep 2021 \u2013 Oct 2021",
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     {
         id: "get-a-grip",
         title: "Get a Grip!",
-        description: "Designed and simulated a sensor-driven system for moving sterilization containers to an autoclave.",
+        description: "Prototyped a sensor-driven workflow that routes sterilization containers to an autoclave through threshold-based robotic actions.",
         category: "Other",
         year: 2021,
         dateRange: "Oct 2021 \u2013 Nov 2021",
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     {
         id: "recycling-hopper-mechanism",
         title: "Recycling Hopper Mechanism",
-        description: "Designed and built a rotary-actuated mechanism for depositing recyclable containers.",
+        description: "Converted rotary actuator motion into a 3D-printed mechanism for releasing recyclables from a hopper; selected for the year-end showcase.",
         category: "Other",
         year: 2022,
         dateRange: "Jan 2022 \u2013 Feb 2022",
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     {
         id: "grades2date",
         title: "Grades2Date | Weighted GPA Calculator",
-        description: "Built a desktop gradebook for managing course profiles and calculating grades and GPA.",
+        description: "Built a reusable desktop gradebook for weighted course calculations and yearly GPA tracking on 4- and 12-point scales.",
         category: "Tools",
         year: 2022,
         dateRange: "Dec 2022",
@@ -109,7 +109,7 @@ export const projects: Project[] = [
     {
         id: "source-water-monitoring-system-analysis",
         title: "Algae Bloom Drone: Source Water Monitoring",
-        description: "Developed a drone-based concept for monitoring source water and detecting algal blooms early.",
+        description: "Designed a drone-based monitoring concept combining spectral imaging and image recognition to detect algal blooms in source water.",
         category: "Other",
         year: 2023,
         collaborators: ["Sydney Durigon", "Emile Gennaro", "Clara Yaromich"],
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     {
         id: "piraten-kapern-simulator",
         title: "Piraten Kapern Simulator",
-        description: "Created a Java command-line simulator for strategy-based Piraten Kapern game play.",
+        description: "Built a configurable Java simulator for 42-game strategy matchups, reporting head-to-head win rates.",
         category: "Tools",
         year: 2023,
         dateRange: "Jan 2023 \u2013 Feb 2023",
@@ -143,7 +143,7 @@ export const projects: Project[] = [
     {
         id: "mesh-generation",
         title: "Mesh Generation",
-        description: "Created the mesh-generation foundation for a shared procedural-generation codebase.",
+        description: "Established the mesh-generation foundation later extended into seeded terrain and procedurally generated urban layouts.",
         category: "Other",
         year: 2023,
         collaborators: ["Hady Ibrahim", "Richard Li"],
@@ -159,7 +159,7 @@ export const projects: Project[] = [
     {
         id: "terrain-generation",
         title: "Terrain Generation",
-        description: "Extended the shared procedural-generation codebase with seeded, reproducible 2D terrain.",
+        description: "Generated reproducible, biome-driven 2D terrain and validated outputs with 5+ JUnit suites across 100+ landscapes.",
         category: "Other",
         year: 2023,
         dateRange: "Mar 2023",
@@ -178,7 +178,7 @@ export const projects: Project[] = [
     {
         id: "urbanism",
         title: "Urbanism",
-        description: "Added generated roads and cities to the shared terrain-generation codebase.",
+        description: "Extended procedural terrain with generated roads, cities, and routes connecting locations to capital cities.",
         category: "Other",
         year: 2023,
         overview:
@@ -190,7 +190,7 @@ export const projects: Project[] = [
     {
         id: "cyrussamante-com",
         title: "Personal Portfolio Website",
-        description: "Designed and iterated on a portfolio website to present projects, skills, and career information.",
+        description: "Revamped a portfolio to showcase 5+ projects and streamline résumé access; the 2023 iteration was associated with a 65% increase in résumé access.",
         category: "Web Apps",
         year: 2023,
         dateRange: "Apr 2022; revamped Jun 2023 \u2013 Jul 2023",
@@ -211,7 +211,7 @@ export const projects: Project[] = [
     {
         id: "pathfinding-visualizer",
         title: "Pathfinding Visualizer",
-        description: "Built an interactive Java Swing tool for visualizing graph-search algorithms.",
+        description: "Made DFS, BFS, and Dijkstra's algorithm easier to explore through step-by-step Java Swing visualizations.",
         category: "Tools",
         featuredOrder: 3,
         year: 2023,
@@ -233,16 +233,16 @@ export const projects: Project[] = [
     {
         id: "guardian-messenger",
         title: "Guardian Messenger",
-        description: "Led a five-person team building an Android chat app with encrypted messaging.",
+        description: "Led a five-person team building an Android messaging app with Java, Firebase, and DES-based message encryption.",
         category: "Mobile",
         featuredOrder: 2,
         year: 2024,
         dateRange: "Apr 2024",
         technologies: ["Java", "Firebase", "Git"],
         overview:
-            "Led a five-person team in developing an Android chat application, contributing to most of the implementation.",
+            "Led a five-person team in developing an Android messaging application with Java and Firebase, including DES-based message encryption.",
         features: [
-            "Implemented DES encryption to protect message confidentiality between users.",
+            "Included DES-based encryption to protect message confidentiality between users.",
             "Developed the Android application using Java and Firebase.",
         ],
         links: [
@@ -255,7 +255,7 @@ export const projects: Project[] = [
     {
         id: "evolving-robot-controllers",
         title: "Evolving Robot Controllers with Emergent Tangled Program Graphs",
-        description: "Built a modular C++ framework connecting Tangled Program Graph controllers with MuJoCo for training and evaluation.",
+        description: "Built a modular C++ training and evaluation framework linking Tangled Program Graph controllers to MuJoCo; Docker and CI improvements cut build times by 50%.",
         category: "Tools",
         featuredOrder: 1,
         year: 2025,

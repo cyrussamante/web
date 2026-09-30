@@ -34,11 +34,6 @@ function Experience() {
                         From software development and teaching to community work, here is a timeline of my experience and education.
                     </p>
                 </div>
-                <p className="text-sm text-secondary theme-transition sm:max-w-32 sm:text-right">
-                    Always learning.
-                    <br />
-                    Always building.
-                </p>
             </header>
 
             <div className="grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_17rem] lg:gap-16">

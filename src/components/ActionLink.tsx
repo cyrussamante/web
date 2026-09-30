@@ -22,7 +22,7 @@ export default function ActionLink({
         "group inline-flex cursor-pointer items-center text-sm font-medium theme-transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
     const variantClass = {
         primary: "rounded-lg bg-accent px-2.5 py-2 text-page hover:bg-accent-hover",
-        secondary: "rounded-lg border border-border bg-page px-2.5 py-2 text-foreground hover:border-accent hover:text-accent",
+        secondary: "rounded-lg border border-border bg-surface px-2.5 py-2 text-foreground hover:border-accent hover:text-accent",
         text: "text-accent hover:text-accent-hover",
     }[variant];
     const textUnderlineClass =

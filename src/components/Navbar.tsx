@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router";
 import useTheme from "../context/useTheme";
 import Switch from "./Switch";
@@ -19,7 +19,44 @@ function getNavLinkClass(isActive: boolean) {
 
 function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMenuAnimating, setIsMenuAnimating] = useState(false);
+    const menuAnimationTimeoutRef = useRef<number | null>(null);
     const { value, toggleTheme } = useTheme();
+
+    useEffect(() => {
+        function handleResize() {
+            if (menuAnimationTimeoutRef.current !== null) {
+                window.clearTimeout(menuAnimationTimeoutRef.current);
+                menuAnimationTimeoutRef.current = null;
+            }
+            setIsMenuAnimating(false);
+
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                setIsMenuOpen(false);
+            }
+        }
+
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            if (menuAnimationTimeoutRef.current !== null) {
+                window.clearTimeout(menuAnimationTimeoutRef.current);
+            }
+        };
+    }, []);
+
+    function setMenuOpen(open: boolean) {
+        if (menuAnimationTimeoutRef.current !== null) {
+            window.clearTimeout(menuAnimationTimeoutRef.current);
+        }
+
+        setIsMenuOpen(open);
+        setIsMenuAnimating(true);
+        menuAnimationTimeoutRef.current = window.setTimeout(() => {
+            setIsMenuAnimating(false);
+            menuAnimationTimeoutRef.current = null;
+        }, 250);
+    }
 
     return (
         <nav className="border-b border-border py-4 text-foreground theme-transition">
@@ -31,9 +68,9 @@ function NavBar() {
                 </div>
                 <div
                     id="mobile-navigation"
-                    className={`absolute inset-x-0 top-full z-10 flex-col border-b border-border bg-page px-6 py-3 text-sm text-secondary shadow-lg theme-transition ${
-                        isMenuOpen ? "flex" : "hidden"
-                    } md:static md:col-start-2 md:flex md:flex-row md:items-center md:justify-self-center md:space-x-6 md:border-0 md:bg-transparent md:px-0 md:py-0 md:shadow-none`}
+                    data-open={isMenuOpen}
+                    data-animate={isMenuAnimating}
+                    className="mobile-nav-panel absolute inset-x-0 top-full z-10 flex flex-col border-b border-border bg-page px-6 py-3 text-sm text-secondary md:static md:col-start-2 md:flex-row md:items-center md:justify-self-center md:space-x-6 md:border-0 md:bg-transparent md:px-0 md:py-0"
                 >
                     {links.map(({ name, path }) => (
                         <NavLink
@@ -41,7 +78,7 @@ function NavBar() {
                             to={path}
                             end={path === "/"}
                             className={({ isActive }) => `${getNavLinkClass(isActive)} py-3 md:py-2`}
-                            onClick={() => setIsMenuOpen(false)}
+                            onClick={() => setMenuOpen(false)}
                         >
                             {name}
                         </NavLink>
@@ -54,8 +91,8 @@ function NavBar() {
                         aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                         aria-expanded={isMenuOpen}
                         aria-controls="mobile-navigation"
-                        className="flex h-10 w-10 flex-col items-center justify-center gap-1 rounded text-foreground hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:hidden"
-                        onClick={() => setIsMenuOpen((open) => !open)}
+                        className="flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1 rounded text-foreground hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:hidden"
+                        onClick={() => setMenuOpen(!isMenuOpen)}
                     >
                         <span className="sr-only">{isMenuOpen ? "Close menu" : "Open menu"}</span>
                         <span className="h-0.5 w-5 bg-current" />
