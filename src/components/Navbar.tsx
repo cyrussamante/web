@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router";
-import { useTheme } from "../context/ThemeContext";
+import useTheme from "../context/useTheme";
 import Switch from "./Switch";
 
 const links = [
@@ -10,7 +10,7 @@ const links = [
 ];
 
 function getNavLinkClass(isActive: boolean) {
-    return `relative inline-block font-medium transition-colors duration-300 ease after:content-[''] md:after:absolute md:after:bottom-1 md:after:left-0 md:after:h-px md:after:w-full md:after:bg-current md:after:transition-opacity md:after:duration-200 md:after:ease-out md:hover:after:opacity-100 md:focus-visible:after:opacity-100 motion-reduce:md:after:transition-none ${
+    return `relative inline-block font-medium theme-transition after:content-[''] md:after:absolute md:after:bottom-1 md:after:left-0 md:after:h-px md:after:w-full md:after:bg-current md:after:transition-opacity md:after:duration-200 md:after:ease-out md:hover:after:opacity-100 md:focus-visible:after:opacity-100 motion-reduce:md:after:transition-none ${
         isActive
             ? "text-accent md:after:opacity-100"
             : "text-secondary hover:text-accent md:after:opacity-0"
@@ -22,16 +22,16 @@ function NavBar() {
     const { value, toggleTheme } = useTheme();
 
     return (
-        <nav className="border-b border-border py-4 text-foreground transition-colors duration-300 ease">
+        <nav className="border-b border-border py-4 text-foreground theme-transition">
             <div className="relative mx-auto grid w-full max-w-7xl grid-cols-2 items-center px-6 sm:px-8 md:grid-cols-3 lg:px-12">
                 <div>
-                    <NavLink to="/" className="whitespace-nowrap text-lg font-extrabold text-foreground">
+                    <NavLink to="/" className="whitespace-nowrap text-lg font-extrabold text-foreground theme-transition">
                         Cyruss Amante
                     </NavLink>
                 </div>
                 <div
                     id="mobile-navigation"
-                    className={`absolute inset-x-0 top-full z-10 flex-col border-b border-border bg-page px-6 py-3 text-sm text-secondary shadow-lg transition-colors duration-300 ease ${
+                    className={`absolute inset-x-0 top-full z-10 flex-col border-b border-border bg-page px-6 py-3 text-sm text-secondary shadow-lg theme-transition ${
                         isMenuOpen ? "flex" : "hidden"
                     } md:static md:col-start-2 md:flex md:flex-row md:items-center md:justify-self-center md:space-x-6 md:border-0 md:bg-transparent md:px-0 md:py-0 md:shadow-none`}
                 >

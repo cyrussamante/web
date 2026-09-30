@@ -8,7 +8,7 @@ interface ActionLinkProps {
 }
 
 export default function ActionLink({ href, variant = "primary", children, showArrow = false }: ActionLinkProps) {
-    const baseClass = "group inline-flex items-center font-medium transition-colors duration-300 ease focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
+    const baseClass = "group inline-flex items-center font-medium theme-transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
     const variantClass = {
         primary: "rounded-full bg-accent px-5 py-2.5 text-page hover:bg-accent-hover",
         secondary: "rounded-full border border-border bg-surface px-5 py-2.5 text-foreground hover:border-accent hover:text-accent",

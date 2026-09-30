@@ -1,6 +1,18 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@utility theme-transition {
+  transition-property: color, background-color, border-color;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-transition {
+    transition-duration: 0ms;
+  }
+}
+
 @theme {
   --color-page: #f5f7f6;
   --color-surface: #ffffff;

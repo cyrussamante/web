@@ -10,7 +10,7 @@ import Experience from "./routes/Experience"
 function App() {
 
   return (
-    <div className="min-h-screen bg-page text-foreground transition-colors duration-300 ease">
+    <div className="min-h-screen bg-page text-foreground theme-transition">
       <NavBar />
       <div className="min-h-screen mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12">
         <Routes>
