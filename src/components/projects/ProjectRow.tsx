@@ -1,6 +1,6 @@
 import type { Project } from "../../data/projects";
 import ProjectMedia from "./ProjectMedia";
-import ProjectBadges from "./ProjectBadges";
+import ProjectSummary from "./ProjectSummary";
 
 interface ProjectRowProps {
     project: Project;
@@ -25,14 +25,11 @@ function ProjectRow({ project, number, onSelect, animationDelay }: ProjectRowPro
                 <span className="text-base font-semibold text-foreground theme-transition">
                     {project.title}
                 </span>
-                {project.description && (
-                    <span className="mt-1 text-sm leading-5 text-secondary theme-transition">
-                        {project.description}
-                    </span>
-                )}
-                <ProjectBadges
-                    items={project.technologies ?? []}
-                    className="mt-3"
+                <ProjectSummary
+                    project={project}
+                    className="w-full"
+                    descriptionClassName="mt-1 text-sm leading-5 text-secondary theme-transition"
+                    badgesClassName="mt-3"
                 />
             </span>
             <ProjectMedia

@@ -10,7 +10,7 @@ interface ProjectBadgeProps {
 const variantClasses: Record<ProjectBadgeVariant, string> = {
     technology: "border border-border bg-page text-secondary",
     category: "border border-accent/50 bg-surface text-accent uppercase tracking-wide",
-    date: "border border-border bg-surface text-muted",
+    date: "border border-border bg-page text-muted",
     featured: "border border-accent/50 bg-surface text-accent uppercase tracking-wide",
     overflow: "border border-border bg-page text-muted",
 };

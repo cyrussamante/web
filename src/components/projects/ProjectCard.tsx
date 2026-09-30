@@ -1,6 +1,6 @@
 import type { Project } from "../../data/projects";
 import ProjectMedia from "./ProjectMedia";
-import ProjectBadges from "./ProjectBadges";
+import ProjectSummary from "./ProjectSummary";
 
 interface ProjectCardProps {
     project: Project;
@@ -19,7 +19,7 @@ function ProjectCard({ project, onSelect, animationDelay }: ProjectCardProps) {
         >
             <ProjectMedia
                 project={project}
-                className="w-full border-0 border-b transition-opacity duration-300 group-hover:opacity-90 motion-reduce:transition-none"
+                className="project-card-motion w-full border-0 border-b group-hover:opacity-90"
             />
             <span className="flex flex-1 flex-col p-4">
                 <span className="flex items-start justify-between gap-3">
@@ -33,15 +33,12 @@ function ProjectCard({ project, onSelect, animationDelay }: ProjectCardProps) {
                         →
                     </span>
                 </span>
-                {project.description && (
-                    <span className="mt-2 line-clamp-3 text-sm leading-5 text-secondary theme-transition">
-                        {project.description}
-                    </span>
-                )}
-                <ProjectBadges
-                    items={project.technologies ?? []}
-                    maxItems={3}
-                    className="mt-auto pt-4"
+                <ProjectSummary
+                    project={project}
+                    className="flex-1"
+                    descriptionClassName="mt-2 line-clamp-3 text-sm leading-5 text-secondary theme-transition"
+                    badgesClassName="mt-auto pt-4"
+                    maxTechnologies={3}
                 />
             </span>
         </button>

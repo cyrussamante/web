@@ -1,24 +1,20 @@
 import { useState } from "react";
-import type { Project, ProjectCategory } from "../data/projects";
-import { projects } from "../data/projects";
+import { projectCategories, projects, type Project } from "../data/projects";
 import ProjectCard from "../components/projects/ProjectCard";
 import ProjectModal from "../components/projects/ProjectModal";
 import SectionLabel from "../components/SectionLabel";
 
-const categories: ("All" | ProjectCategory)[] = [
+const categories = [
     "All",
-    "Web Apps",
-    "Mobile",
-    "Tools",
-    "Other",
-];
+    ...projectCategories,
+] as const;
 
 type ProjectSortOrder = "newest" | "oldest" | "alphabetical";
 
 const sortOptions: { value: ProjectSortOrder; label: string }[] = [
     { value: "newest", label: "Newest first" },
     { value: "oldest", label: "Oldest first" },
-    { value: "alphabetical", label: "A–Z" },
+    { value: "alphabetical", label: "A\u2013Z" },
 ];
 
 function Projects() {
@@ -139,7 +135,7 @@ function Projects() {
                     <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {filteredProjects.map((project, index) => (
                             <ProjectCard
-                                key={`${project.id}-${activeCategory}-${sortOrder}`}
+                                key={project.id}
                                 project={project}
                                 onSelect={setSelectedProject}
                                 animationDelay={Math.min(index, 4) * 30}

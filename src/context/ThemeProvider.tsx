@@ -10,7 +10,9 @@ function ThemeProvider({ children }: { children: ReactNode }) {
         return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     });
 
-    const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+    const toggleTheme = () => {
+        setTheme((currentTheme) => (currentTheme === "light" ? "dark" : "light"));
+    };
 
     useLayoutEffect(() => {
         document.documentElement.classList.toggle("dark", theme === "dark");

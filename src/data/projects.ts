@@ -1,4 +1,5 @@
-export type ProjectCategory = "Web Apps" | "Mobile" | "Tools" | "Other";
+export const projectCategories = ["Web Apps", "Mobile", "Tools", "Other"] as const;
+export type ProjectCategory = (typeof projectCategories)[number];
 
 type ProjectImage = {
     src: string;
@@ -10,7 +11,7 @@ export type Project = {
     title: string;
     description?: string;
     category: ProjectCategory;
-    featured?: boolean;
+    featuredOrder?: number;
     year?: number;
     dateRange?: string;
     collaborators?: string[];
@@ -34,7 +35,7 @@ export const projects: Project[] = [
         description: "Evaluated materials and mechanical performance for a wind-turbine blade design.",
         category: "Other",
         year: 2021,
-        dateRange: "Sep 2021 – Oct 2021",
+        dateRange: "Sep 2021 \u2013 Oct 2021",
         collaborators: ["Swesan Pathmanathan", "Manisha Kohli", "Patricia Girgis"],
         technologies: ["GRANTA EduPack", "Autodesk Inventor"],
         overview:
@@ -52,7 +53,7 @@ export const projects: Project[] = [
         description: "Designed and simulated a sensor-driven system for moving sterilization containers to an autoclave.",
         category: "Other",
         year: 2021,
-        dateRange: "Oct 2021 – Nov 2021",
+        dateRange: "Oct 2021 \u2013 Nov 2021",
         collaborators: ["Aryana Zarringhalam"],
         technologies: ["Python", "Quanser Interactive Labs", "Raspberry Pi"],
         overview:
@@ -70,7 +71,7 @@ export const projects: Project[] = [
         description: "Designed and built a rotary-actuated mechanism for depositing recyclable containers.",
         category: "Other",
         year: 2022,
-        dateRange: "Jan 2022 – Feb 2022",
+        dateRange: "Jan 2022 \u2013 Feb 2022",
         collaborators: ["Joseph Petrasek"],
         technologies: ["Autodesk Inventor", "3D printing"],
         overview:
@@ -128,7 +129,7 @@ export const projects: Project[] = [
         description: "Created a Java command-line simulator for strategy-based Piraten Kapern game play.",
         category: "Tools",
         year: 2023,
-        dateRange: "Jan 2023 – Feb 2023",
+        dateRange: "Jan 2023 \u2013 Feb 2023",
         technologies: ["Java", "Maven", "Log4j", "Git"],
         overview:
             "Created a two-player command-line simulator for Piraten Kapern. Players can use different dice-rolling strategies based on a drawn fortune card or a strategy provided through command-line arguments.",
@@ -192,7 +193,7 @@ export const projects: Project[] = [
         description: "Designed and iterated on a portfolio website to present projects, skills, and career information.",
         category: "Web Apps",
         year: 2023,
-        dateRange: "Apr 2022; revamped Jun 2023 – Jul 2023",
+        dateRange: "Apr 2022; revamped Jun 2023 \u2013 Jul 2023",
         technologies: ["HTML", "CSS", "JavaScript", "Ruby on Rails", "Figma"],
         overview:
             "Built and revamped a personal portfolio website across two iterations, organizing project details, skills, resume access, and contact information. The 2023 version was associated with a 65% increase in resume access. This is the legacy portfolio, not the current website.",
@@ -212,9 +213,9 @@ export const projects: Project[] = [
         title: "Pathfinding Visualizer",
         description: "Built an interactive Java Swing tool for visualizing graph-search algorithms.",
         category: "Tools",
-        featured: true,
+        featuredOrder: 3,
         year: 2023,
-        dateRange: "Jul 2023 – Aug 2023",
+        dateRange: "Jul 2023 \u2013 Aug 2023",
         technologies: ["Java", "Java Swing"],
         overview:
             "Built an interactive Java Swing application that makes graph-search algorithms observable through step-by-step visualizations.",
@@ -234,7 +235,7 @@ export const projects: Project[] = [
         title: "Guardian Messenger",
         description: "Led a five-person team building an Android chat app with encrypted messaging.",
         category: "Mobile",
-        featured: true,
+        featuredOrder: 2,
         year: 2024,
         dateRange: "Apr 2024",
         technologies: ["Java", "Firebase", "Git"],
@@ -256,9 +257,9 @@ export const projects: Project[] = [
         title: "Evolving Robot Controllers with Emergent Tangled Program Graphs",
         description: "Built a modular C++ framework connecting Tangled Program Graph controllers with MuJoCo for training and evaluation.",
         category: "Tools",
-        featured: true,
+        featuredOrder: 1,
         year: 2025,
-        dateRange: "Sep 2024 – Apr 2025",
+        dateRange: "Sep 2024 \u2013 Apr 2025",
         technologies: ["C++", "Python", "Docker", "GitLab CI/CD", "MuJoCo"],
         overview:
             "Developed a modular C++ framework for training and evaluating Tangled Program Graph (TPG) controllers in MuJoCo, connecting the TPG engine to simulator feedback for policy learning.",

@@ -1,5 +1,10 @@
-import { Link } from "react-router";
 import ActionLink from "./ActionLink";
+
+const socialLinks = [
+    { label: "GitHub", href: "https://github.com/cyrussamante" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/cyrussamante" },
+    { label: "Email", href: "mailto:contact@cyrussamante.com" },
+];
 
 function Footer() {
     return (
@@ -12,9 +17,11 @@ function Footer() {
                     </p>
                 </div>
                 <div className="flex items-end gap-5 text-sm text-secondary theme-transition sm:justify-end">
-                    <Link to={"https://github.com/cyrussamante"}>GitHub</Link>
-                    <Link to={"https://www.linkedin.com/in/cyrussamante"}>LinkedIn</Link>
-                    <Link to={"mailto:contact@cyrussamante.com"}>Email</Link>
+                    {socialLinks.map(({ label, href }) => (
+                        <a key={label} href={href}>
+                            {label}
+                        </a>
+                    ))}
                 </div>
                 <div className="text-sm font-medium text-accent">
                     <ActionLink href="mailto:contact@cyrussamante.com" variant="text" showArrow={true}>Get in Touch</ActionLink>

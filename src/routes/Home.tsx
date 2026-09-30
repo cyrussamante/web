@@ -4,24 +4,19 @@ import Divider from "../components/Divider";
 import SectionLabel from "../components/SectionLabel";
 import ProjectModal from "../components/projects/ProjectModal";
 import ProjectRow from "../components/projects/ProjectRow";
-import { projects } from "../data/projects";
-import type { Project } from "../data/projects";
+import { projects, type Project } from "../data/projects";
 
-const featuredProjectOrder: Record<string, number> = {
-    "evolving-robot-controllers": 1,
-    "guardian-messenger": 2,
-    "pathfinding-visualizer": 3,
-};
+type FeaturedProject = Project & { featuredOrder: number };
+
+function isFeaturedProject(project: Project): project is FeaturedProject {
+    return project.featuredOrder !== undefined;
+}
 
 function Home() {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const featuredProjects = projects
-        .filter((project) => project.featured)
-        .sort(
-            (first, second) =>
-                (featuredProjectOrder[first.id] ?? Number.POSITIVE_INFINITY) -
-                (featuredProjectOrder[second.id] ?? Number.POSITIVE_INFINITY),
-        );
+        .filter(isFeaturedProject)
+        .sort((first, second) => first.featuredOrder - second.featuredOrder);
 
     return (
         <main>

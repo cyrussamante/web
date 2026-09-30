@@ -16,7 +16,7 @@ function ProjectMedia({ project, className = "" }: ProjectMediaProps) {
         .toUpperCase();
 
     return (
-        <div
+        <span
             className={`relative grid aspect-16/10 place-items-center overflow-hidden rounded-xl border border-border bg-surface bg-clip-padding theme-transition ${className}`}
         >
             {image ? (
@@ -27,21 +27,21 @@ function ProjectMedia({ project, className = "" }: ProjectMediaProps) {
                     loading="lazy"
                 />
             ) : (
-                <div
+                <span
                     role="img"
                     aria-label={`${project.title} preview image coming soon`}
-                    className="flex h-full w-full flex-col items-center justify-center gap-3 bg-linear-to-br from-surface via-page to-accent/10 p-5 text-center"
+                    className="flex h-full w-full flex-col items-center justify-center gap-3 bg-page p-5 text-center theme-transition"
                 >
                     <span
                         aria-hidden="true"
-                        className="grid h-11 w-11 place-items-center border border-accent/50 text-sm font-semibold tracking-widest text-accent"
+                        className="grid h-11 w-11 place-items-center border border-accent/50 text-sm font-semibold tracking-widest text-accent theme-transition"
                     >
                         {initials}
                     </span>
-                    <span className="text-xs text-muted">Project image coming soon</span>
-                </div>
+                    <span className="text-xs text-muted theme-transition">Project image coming soon</span>
+                </span>
             )}
-        </div>
+        </span>
     );
 }
 

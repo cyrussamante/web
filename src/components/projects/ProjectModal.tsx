@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import type { MouseEvent } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { AnimationEvent, MouseEvent } from "react";
 import type { Project } from "../../data/projects";
 import ActionLink from "../ActionLink";
 import ProjectMedia from "./ProjectMedia";
@@ -13,6 +13,9 @@ interface ProjectModalProps {
 
 function ProjectModal({ project, onClose }: ProjectModalProps) {
     const dialogRef = useRef<HTMLDialogElement>(null);
+    const closeTimeoutRef = useRef<number | null>(null);
+    const closeStartedRef = useRef(false);
+    const [isClosing, setIsClosing] = useState(false);
 
     useEffect(() => {
         const dialog = dialogRef.current;
@@ -21,12 +24,38 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
         dialog.showModal();
 
         return () => {
+            if (closeTimeoutRef.current !== null) {
+                window.clearTimeout(closeTimeoutRef.current);
+            }
             if (dialog.open) dialog.close();
         };
     }, []);
 
     function handleBackdropClick(event: MouseEvent<HTMLDialogElement>) {
-        if (event.target === event.currentTarget) onClose();
+        if (event.target === event.currentTarget) requestClose();
+    }
+
+    function requestClose() {
+        if (closeStartedRef.current) return;
+        closeStartedRef.current = true;
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            onClose();
+            return;
+        }
+
+        setIsClosing(true);
+        closeTimeoutRef.current = window.setTimeout(onClose, 300);
+    }
+
+    function handleAnimationEnd(event: AnimationEvent<HTMLDialogElement>) {
+        if (event.target === event.currentTarget && event.animationName === "dialog-exit") {
+            if (closeTimeoutRef.current !== null) {
+                window.clearTimeout(closeTimeoutRef.current);
+                closeTimeoutRef.current = null;
+            }
+            onClose();
+        }
     }
 
     const date = project.dateRange ?? project.year?.toString();
@@ -35,9 +64,11 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
         <dialog
             ref={dialogRef}
             aria-labelledby="project-modal-title"
+            data-closing={isClosing || undefined}
+            onAnimationEnd={handleAnimationEnd}
             onCancel={(event) => {
                 event.preventDefault();
-                onClose();
+                requestClose();
             }}
             onClick={handleBackdropClick}
             className="m-auto max-h-[min(92dvh,60rem)] w-[min(94vw,64rem)] max-w-none overflow-y-auto rounded-2xl border border-border bg-page p-0 text-foreground shadow-2xl backdrop:bg-black/70 theme-transition"
@@ -45,7 +76,7 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
             <div className="relative p-6 pt-16 sm:p-8 sm:pt-16 lg:p-10 lg:pt-10">
                 <button
                     type="button"
-                    onClick={onClose}
+                    onClick={requestClose}
                     aria-label="Close project details"
                     className="absolute right-5 top-5 z-10 grid h-10 w-10 cursor-pointer place-items-center rounded-full border border-border bg-page text-secondary theme-transition hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-6 sm:top-6 lg:right-8 lg:top-8"
                 >
@@ -64,7 +95,7 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
                                     {date}
                                 </ProjectBadge>
                             )}
-                            {project.featured && (
+                            {project.featuredOrder !== undefined && (
                                 <ProjectBadge variant="featured">
                                     Featured
                                 </ProjectBadge>
@@ -90,7 +121,7 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
                                             key={`${link.label}-${link.href}`}
                                             href={link.href}
                                             variant={link.variant ?? "secondary"}
-                                            external={isExternal}
+                                            openInNewTab={isExternal}
                                             showArrow={isExternal}
                                         >
                                             {link.label}
