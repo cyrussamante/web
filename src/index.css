@@ -7,21 +7,73 @@
   transition-timing-function: ease;
 }
 
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes backdrop-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility motion-fade-up {
+  animation: fade-up 550ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+
+@utility project-card-motion {
+  transition: transform 300ms ease-out, box-shadow 300ms ease-out, border-color 300ms ease-out;
+}
+
+dialog[open] {
+  animation: dialog-enter 400ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+
+dialog[open]::backdrop {
+  animation: backdrop-enter 300ms ease-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .theme-transition {
+  .theme-transition,
+  .motion-fade-up,
+  .project-card-motion,
+  dialog[open],
+  dialog[open]::backdrop {
     transition-duration: 0ms;
+    animation: none;
   }
 }
 
 @theme {
-  --color-page: #f5f7f6;
+  --color-page: #eef2f0;
   --color-surface: #ffffff;
   --color-foreground: #15191c;
-  --color-secondary: #53616a;
-  --color-muted: #74818a;
-  --color-border: #e2e7e5;
-  --color-accent: #20b398;
-  --color-accent-hover: #188f7a;
+  --color-secondary: #46545a;
+  --color-muted: #5e6b72;
+  --color-border: #cbd4d0;
+  --color-accent: #087b67;
+  --color-accent-hover: #066653;
 }
 
 .dark {

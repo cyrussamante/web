@@ -1,12 +1,32 @@
+import { useState } from "react";
 import ActionLink from "../components/ActionLink";
 import Divider from "../components/Divider";
 import SectionLabel from "../components/SectionLabel";
+import ProjectModal from "../components/projects/ProjectModal";
+import ProjectRow from "../components/projects/ProjectRow";
+import { projects } from "../data/projects";
+import type { Project } from "../data/projects";
+
+const featuredProjectOrder: Record<string, number> = {
+    "evolving-robot-controllers": 1,
+    "guardian-messenger": 2,
+    "pathfinding-visualizer": 3,
+};
 
 function Home() {
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const featuredProjects = projects
+        .filter((project) => project.featured)
+        .sort(
+            (first, second) =>
+                (featuredProjectOrder[first.id] ?? Number.POSITIVE_INFINITY) -
+                (featuredProjectOrder[second.id] ?? Number.POSITIVE_INFINITY),
+        );
+
     return (
         <main>
             <section className="grid items-center gap-10 py-12 sm:py-16 md:grid-cols-2 md:gap-12 md:py-20">
-                <div>
+                <div className="motion-fade-up">
                     <SectionLabel>SOFTWARE DEVELOPER</SectionLabel>
                     <h1 className="mt-3 text-4xl font-bold leading-tight tracking-tight text-foreground theme-transition sm:text-5xl lg:text-6xl">
                         Hi, I&apos;m <span className="text-accent theme-transition">Cyruss.</span>
@@ -24,7 +44,10 @@ function Home() {
                         </ActionLink>
                     </div>
                 </div>
-                <div className="relative mx-auto w-full max-w-md md:justify-self-end">
+                <div
+                    className="motion-fade-up relative mx-auto w-full max-w-md md:justify-self-end"
+                    style={{ animationDelay: "120ms" }}
+                >
                     <div aria-hidden="true" className="absolute -right-3 -top-3 h-full w-full border border-accent/60" />
                     <div
                         role="img"
@@ -36,7 +59,10 @@ function Home() {
                 </div>
             </section>
             <Divider />
-            <section className="py-10 sm:py-12">
+            <section
+                className="motion-fade-up py-10 sm:py-12"
+                style={{ animationDelay: "100ms" }}
+            >
                 <SectionLabel>EDUCATION</SectionLabel>
                 <div className="mt-4 grid gap-6 md:grid-cols-2 md:items-center md:gap-10">
                     <div>
@@ -52,7 +78,10 @@ function Home() {
                 </div>
             </section>
             <Divider />
-            <section className="py-10 sm:py-12">
+            <section
+                className="motion-fade-up py-10 sm:py-12"
+                style={{ animationDelay: "160ms" }}
+            >
                 <div className="flex flex-wrap items-end justify-between gap-4">
                     <div>
                         <SectionLabel>FEATURED PROJECTS</SectionLabel>
@@ -63,9 +92,27 @@ function Home() {
                     </ActionLink>
                 </div>
                 <p className="mt-4 max-w-2xl text-sm leading-6 text-secondary theme-transition">
-                    Here are some of the projects I have worked on, showcasing my skills and experience in web development.
+                    A selection of projects I&apos;ve worked on, from interactive tools to applications.
                 </p>
+                <div className="mt-3">
+                    {featuredProjects.map((project, index) => (
+                        <ProjectRow
+                            key={project.id}
+                            project={project}
+                            number={String(index + 1).padStart(2, "0")}
+                            onSelect={setSelectedProject}
+                            animationDelay={100 + index * 35}
+                        />
+                    ))}
+                </div>
             </section>
+
+            {selectedProject && (
+                <ProjectModal
+                    project={selectedProject}
+                    onClose={() => setSelectedProject(null)}
+                />
+            )}
         </main>
     );
 }
