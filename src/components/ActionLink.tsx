@@ -40,7 +40,7 @@ export default function ActionLink({
                     aria-hidden="true"
                     className="ml-2 inline-block transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5 motion-reduce:transition-none"
                 >
-                    {openInNewTab ? "↗" : "→"}
+                    {openInNewTab ? "\u2197\uFE0E" : "\u2192\uFE0E"}
                 </span>
             )}
         </>

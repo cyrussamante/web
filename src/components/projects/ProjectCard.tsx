@@ -30,7 +30,7 @@ function ProjectCard({ project, onSelect, animationDelay }: ProjectCardProps) {
                         aria-hidden="true"
                         className="shrink-0 text-accent theme-transition transition-transform duration-300 group-hover:translate-x-0.5 motion-reduce:transition-none"
                     >
-                        →
+                        {"\u2192\uFE0E"}
                     </span>
                 </span>
                 <ProjectSummary

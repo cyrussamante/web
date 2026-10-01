@@ -53,7 +53,7 @@ export const projects: readonly Project[] = [
         collaborators: ["Swesan Pathmanathan", "Manisha Kohli", "Patricia Girgis"],
         technologies: ["GRANTA EduPack", "Autodesk Inventor"],
         previewImage: {
-            src: "/images/projects/wind-turbine-design.png",
+            src: "/images/projects/wind-turbine-design.webp",
             alt: "Wind turbine blade displacement simulation",
         },
         overview:
@@ -75,7 +75,7 @@ export const projects: readonly Project[] = [
         collaborators: ["Aryana Zarringhalam"],
         technologies: ["Python", "Quanser Interactive Labs", "Raspberry Pi"],
         previewImage: {
-            src: "/images/projects/get-a-grip.png",
+            src: "/images/projects/get-a-grip.webp",
             alt: "Simulated robotic arm sorting containers in a rehabilitation lab",
         },
         overview:
@@ -97,7 +97,7 @@ export const projects: readonly Project[] = [
         collaborators: ["Joseph Petrasek"],
         technologies: ["Autodesk Inventor", "3D printing"],
         previewImage: {
-            src: "/images/projects/recycling-hopper.png",
+            src: "/images/projects/recycling-hopper.webp",
             alt: "3D-printed rotary mechanism attached to a recycling hopper",
         },
         overview:
@@ -118,7 +118,7 @@ export const projects: readonly Project[] = [
         dateRange: "Dec 2022",
         technologies: ["Python", "Tkinter"],
         previewImage: {
-            src: "/images/projects/grades2date.png",
+            src: "/images/projects/grades2date.webp",
             alt: "Grades2Date gradebook showing course grades, unit counts, and calculated GPA",
         },
         overview:
@@ -144,7 +144,7 @@ export const projects: readonly Project[] = [
         year: 2023,
         collaborators: ["Sydney Durigon", "Emile Gennaro", "Clara Yaromich"],
         previewImage: {
-            src: "/images/projects/source-water-monitoring.jpg",
+            src: "/images/projects/source-water-monitoring.webp",
             alt: "Aerial view from a small aircraft surveying a lake and shoreline for water monitoring",
         },
         overview:
@@ -187,7 +187,7 @@ export const projects: readonly Project[] = [
         collaborators: ["Hady Ibrahim", "Richard Li"],
         technologies: ["Java", "JUnit"],
         previewImage: {
-            src: "/images/projects/mesh-generation.png",
+            src: "/images/projects/mesh-generation.webp",
             alt: "Generated irregular polygon mesh visualization",
         },
         overview:
@@ -210,7 +210,7 @@ export const projects: readonly Project[] = [
         collaborators: ["Hady Ibrahim", "Richard Li"],
         technologies: ["Java", "JUnit"],
         previewImage: {
-            src: "/images/projects/terrain-generation.png",
+            src: "/images/projects/terrain-generation.webp",
             alt: "Procedurally generated island with distinct terrain biomes and lakes",
         },
         overview:
@@ -231,7 +231,7 @@ export const projects: readonly Project[] = [
         category: "Other",
         year: 2023,
         previewImage: {
-            src: "/images/projects/urbanism.jpg",
+            src: "/images/projects/urbanism.webp",
             alt: "Aerial view of a suburban neighborhood with winding roads branching between clusters of houses",
         },
         overview:
@@ -254,8 +254,8 @@ export const projects: readonly Project[] = [
         dateRange: "2026",
         technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "React Router"],
         previewImage: {
-            src: "/images/projects/cyrussamante-com-light.png",
-            darkSrc: "/images/projects/cyrussamante-com-dark.png",
+            src: "/images/projects/cyrussamante-com-light.webp",
+            darkSrc: "/images/projects/cyrussamante-com-dark.webp",
             alt: "This portfolio website's home page",
         },
         overview:
@@ -283,7 +283,7 @@ export const projects: readonly Project[] = [
         dateRange: "Jul 2023 \u2013 Aug 2023",
         technologies: ["Java", "Java Swing"],
         previewImage: {
-            src: "/images/projects/pathfinding-visualizer.png",
+            src: "/images/projects/pathfinding-visualizer.webp",
             alt: "Pathfinding Visualizer showing a completed Dijkstra route across a grid board",
             fit: "contain",
         },
@@ -310,7 +310,7 @@ export const projects: readonly Project[] = [
         dateRange: "Apr 2024",
         technologies: ["Java", "Firebase", "Git"],
         previewImage: {
-            src: "/images/projects/guardian-messenger.png",
+            src: "/images/projects/guardian-messenger.webp",
             alt: "Guardian Messenger Android app showing an encrypted message conversation",
             fit: "contain",
         },
@@ -337,7 +337,7 @@ export const projects: readonly Project[] = [
         dateRange: "Sep 2024 \u2013 Apr 2025",
         technologies: ["C++", "Python", "Docker", "GitLab CI/CD", "MuJoCo"],
         previewImage: {
-            src: "/images/projects/tangled-program-graphs.jpg",
+            src: "/images/projects/tangled-program-graphs.webp",
             alt: "Tangled Program Graphs capstone project poster",
         },
         overview:

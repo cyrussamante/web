@@ -30,6 +30,7 @@ function ProjectMedia({ project, className = "" }: ProjectMediaProps) {
                     style={image.zoom ? { scale: image.zoom } : undefined}
                     className={`absolute inset-0 h-full w-full ${imageFitClass} transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none`}
                     loading="lazy"
+                    decoding="async"
                 />
             ) : (
                 <span

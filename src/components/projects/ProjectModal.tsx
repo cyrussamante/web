@@ -195,7 +195,7 @@ function ProjectModal({
                                                 key={feature}
                                                 className="flex gap-3 text-sm leading-6 text-secondary theme-transition"
                                             >
-                                                <span aria-hidden="true" className="text-accent theme-transition">✓</span>
+                                                <span aria-hidden="true" className="text-accent theme-transition">{"\u2713\uFE0E"}</span>
                                                 <span>{feature}</span>
                                             </li>
                                         ))}
@@ -279,7 +279,7 @@ function ProjectModal({
                             }}
                             className="inline-flex min-h-10 items-center gap-2 rounded-lg px-3 text-sm font-medium text-secondary theme-transition hover:bg-page hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-40"
                         >
-                            <span aria-hidden="true">←</span>
+                            <span aria-hidden="true">{"\u2190\uFE0E"}</span>
                             <span>Previous</span>
                         </button>
                         <p className="text-xs tabular-nums text-muted theme-transition">
@@ -300,7 +300,7 @@ function ProjectModal({
                             className="inline-flex min-h-10 items-center gap-2 rounded-lg px-3 text-sm font-medium text-secondary theme-transition hover:bg-page hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-40"
                         >
                             <span>Next</span>
-                            <span aria-hidden="true">→</span>
+                            <span aria-hidden="true">{"\u2192\uFE0E"}</span>
                         </button>
                     </nav>
                 )}
