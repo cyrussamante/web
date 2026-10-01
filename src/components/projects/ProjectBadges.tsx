@@ -1,7 +1,7 @@
 import ProjectBadge from "./ProjectBadge";
 
 interface ProjectBadgesProps {
-    items: string[];
+    items: readonly string[];
     maxItems?: number;
     className?: string;
 }

@@ -4,22 +4,15 @@ import ScrollReveal from "../components/ScrollReveal";
 import SkillGroup from "../components/experience/SkillGroup";
 import SectionLabel from "../components/SectionLabel";
 import { professionalExperience, skillGroups } from "../data/experience";
-
-function getMostRecentRoleDate(organization: (typeof professionalExperience)[number]) {
-    return organization.roles.reduce(
-        (mostRecent, role) => role.sortDate > mostRecent ? role.sortDate : mostRecent,
-        "",
-    );
-}
+import { sortExperienceOrganizations } from "../utils/experience";
+import usePageMetadata from "../hooks/usePageMetadata";
 
 function Experience() {
-    const chronologicallySortedExperience = [...professionalExperience].sort(
-        (first, second) => {
-            if (first.id === "adp-current") return -1;
-            if (second.id === "adp-current") return 1;
-
-            return getMostRecentRoleDate(second).localeCompare(getMostRecentRoleDate(first));
-        },
+    const chronologicallySortedExperience =
+        sortExperienceOrganizations(professionalExperience);
+    usePageMetadata(
+        "Experience",
+        "Cyruss Amante's professional experience, education, and skills, including work with Java, Spring Boot, React, and Splunk.",
     );
 
     return (
@@ -41,7 +34,7 @@ function Experience() {
                     <section aria-labelledby="experience-heading">
                         <h2
                             id="experience-heading"
-                            className="text-xs font-semibold uppercase tracking-[0.16em] text-accent"
+                            className="text-xs font-semibold uppercase tracking-[0.16em] text-accent theme-transition"
                         >
                             Experience
                         </h2>
@@ -64,7 +57,7 @@ function Experience() {
                         <section aria-labelledby="skills-heading">
                             <h2
                                 id="skills-heading"
-                                className="text-xs font-semibold uppercase tracking-[0.16em] text-accent"
+                                className="text-xs font-semibold uppercase tracking-[0.16em] text-accent theme-transition"
                             >
                                 Skills
                             </h2>

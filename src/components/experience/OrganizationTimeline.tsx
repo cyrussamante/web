@@ -1,14 +1,14 @@
 import type { ExperienceOrganization as ExperienceOrganizationData } from "../../data/experience";
+import { sortExperienceRoles } from "../../utils/experience";
 import ScrollReveal from "../ScrollReveal";
+import TagList from "../TagList";
 
 interface OrganizationTimelineProps {
     organization: ExperienceOrganizationData;
 }
 
 function OrganizationTimeline({ organization }: OrganizationTimelineProps) {
-    const sortedRoles = [...organization.roles].sort((first, second) =>
-        second.sortDate.localeCompare(first.sortDate),
-    );
+    const sortedRoles = sortExperienceRoles(organization.roles);
 
     return (
         <li className="relative border-b border-border pb-8 pl-7 last:border-b-0 sm:pl-9 theme-transition">
@@ -63,35 +63,19 @@ function OrganizationTimeline({ organization }: OrganizationTimelineProps) {
                                     <p className="mt-2 text-sm leading-6 text-secondary theme-transition">
                                         {role.spotlight.description}
                                     </p>
-                                    <ul
-                                        aria-label="AI development tools"
-                                        className="mt-3 flex flex-wrap gap-2"
-                                    >
-                                        {role.spotlight.skills.map((skill) => (
-                                            <li
-                                                key={skill}
-                                                className="rounded-full border border-border bg-page px-2.5 py-1 text-[11px] text-secondary theme-transition"
-                                            >
-                                                {skill}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    <TagList
+                                        items={role.spotlight.skills}
+                                        label={role.spotlight.skillsLabel}
+                                        className="mt-3"
+                                    />
                                 </section>
                             )}
                             {role.skills && role.skills.length > 0 && (
-                                <ul
-                                    aria-label="Technologies and methods used"
-                                    className="mt-4 flex flex-wrap gap-2"
-                                >
-                                    {role.skills.map((skill) => (
-                                        <li
-                                            key={skill}
-                                            className="rounded-full border border-border bg-page px-2.5 py-1 text-[11px] text-secondary theme-transition"
-                                        >
-                                            {skill}
-                                        </li>
-                                    ))}
-                                </ul>
+                                <TagList
+                                    items={role.skills}
+                                    label="Technologies and methods used"
+                                    className="mt-4"
+                                />
                             )}
                         </ScrollReveal>
                     </li>

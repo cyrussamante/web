@@ -1,6 +1,8 @@
+import TagList from "../TagList";
+
 interface SkillGroupProps {
     title: string;
-    skills: string[];
+    skills: readonly string[];
 }
 
 function SkillGroup({ title, skills }: SkillGroupProps) {
@@ -9,16 +11,7 @@ function SkillGroup({ title, skills }: SkillGroupProps) {
             <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                 {title}
             </h3>
-            <ul className="mt-3 flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                    <li
-                        key={skill}
-                        className="rounded-full border border-border bg-page px-2.5 py-1 text-[11px] text-secondary theme-transition"
-                    >
-                        {skill}
-                    </li>
-                ))}
-            </ul>
+            <TagList items={skills} className="mt-3" />
         </section>
     );
 }

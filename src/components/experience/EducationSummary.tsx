@@ -1,4 +1,5 @@
 import ScrollReveal from "../ScrollReveal";
+import TagList from "../TagList";
 import { education } from "../../data/experience";
 
 function EducationSummary() {
@@ -19,16 +20,11 @@ function EducationSummary() {
                     <p className="mt-1 text-sm text-secondary theme-transition">
                         {education.organization}
                     </p>
-                    <ul className="mt-4 flex flex-wrap gap-2">
-                        {education.details.map((detail) => (
-                            <li
-                                key={detail}
-                                className="rounded-full border border-border bg-page px-2.5 py-1 text-xs text-secondary theme-transition"
-                            >
-                                {detail}
-                            </li>
-                        ))}
-                    </ul>
+                    <TagList
+                        items={education.details}
+                        className="mt-4"
+                        size="medium"
+                    />
                 </div>
             </ScrollReveal>
         </section>

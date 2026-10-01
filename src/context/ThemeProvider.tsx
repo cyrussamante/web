@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState, type ReactNode } from "react";
-import { ThemeContext, type Theme } from "./themeContext";
+import { ThemeContext, type Theme } from "./theme-context";
 
 function ThemeProvider({ children }: { children: ReactNode }) {
     const [theme, setTheme] = useState<Theme>(() => {
@@ -20,7 +20,7 @@ function ThemeProvider({ children }: { children: ReactNode }) {
     }, [theme]);
 
     return (
-        <ThemeContext.Provider value={{ value: theme, toggleTheme }}>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
             {children}
         </ThemeContext.Provider>
     );

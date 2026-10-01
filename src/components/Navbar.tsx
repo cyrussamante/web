@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router";
 import useTheme from "../context/useTheme";
-import Switch from "./Switch";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
     { name: "Home", path: "/" },
     { name: "Projects", path: "/projects" },
     { name: "Experience", path: "/experience" },
 ];
+const desktopViewport = "(min-width: 768px)";
+const menuTransitionSettleDelay = 250;
 
 function getNavLinkClass(isActive: boolean) {
     return `relative inline-block font-medium theme-transition after:content-[''] md:after:absolute md:after:bottom-1 md:after:left-0 md:after:h-px md:after:w-full md:after:bg-current md:after:transition-opacity md:after:duration-300 md:after:ease-out md:hover:after:opacity-100 md:focus-visible:after:opacity-100 motion-reduce:md:after:transition-none ${
@@ -17,28 +19,29 @@ function getNavLinkClass(isActive: boolean) {
     }`;
 }
 
-function NavBar() {
+function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMenuAnimating, setIsMenuAnimating] = useState(false);
     const menuAnimationTimeoutRef = useRef<number | null>(null);
-    const { value, toggleTheme } = useTheme();
+    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
-        function handleResize() {
+        const mediaQuery = window.matchMedia(desktopViewport);
+
+        function handleViewportChange(event: MediaQueryListEvent) {
+            if (!event.matches) return;
+
             if (menuAnimationTimeoutRef.current !== null) {
                 window.clearTimeout(menuAnimationTimeoutRef.current);
                 menuAnimationTimeoutRef.current = null;
             }
             setIsMenuAnimating(false);
-
-            if (window.matchMedia("(min-width: 768px)").matches) {
-                setIsMenuOpen(false);
-            }
+            setIsMenuOpen(false);
         }
 
-        window.addEventListener("resize", handleResize);
+        mediaQuery.addEventListener("change", handleViewportChange);
         return () => {
-            window.removeEventListener("resize", handleResize);
+            mediaQuery.removeEventListener("change", handleViewportChange);
             if (menuAnimationTimeoutRef.current !== null) {
                 window.clearTimeout(menuAnimationTimeoutRef.current);
             }
@@ -46,6 +49,8 @@ function NavBar() {
     }, []);
 
     function setMenuOpen(open: boolean) {
+        if (isMenuOpen === open) return;
+
         if (menuAnimationTimeoutRef.current !== null) {
             window.clearTimeout(menuAnimationTimeoutRef.current);
         }
@@ -55,7 +60,7 @@ function NavBar() {
         menuAnimationTimeoutRef.current = window.setTimeout(() => {
             setIsMenuAnimating(false);
             menuAnimationTimeoutRef.current = null;
-        }, 250);
+        }, menuTransitionSettleDelay);
     }
 
     return (
@@ -70,7 +75,7 @@ function NavBar() {
                     id="mobile-navigation"
                     data-open={isMenuOpen}
                     data-animate={isMenuAnimating}
-                    className="mobile-nav-panel absolute inset-x-0 top-full z-10 flex flex-col border-b border-border bg-page px-6 py-3 text-sm text-secondary md:static md:col-start-2 md:flex-row md:items-center md:justify-self-center md:space-x-6 md:border-0 md:bg-transparent md:px-0 md:py-0"
+                    className="mobile-nav-panel absolute inset-x-0 top-full z-10 flex flex-col border-b border-border bg-page px-6 py-3 text-sm text-secondary theme-transition md:static md:col-start-2 md:flex-row md:items-center md:justify-self-center md:space-x-6 md:border-0 md:bg-transparent md:px-0 md:py-0"
                 >
                     {links.map(({ name, path }) => (
                         <NavLink
@@ -85,13 +90,16 @@ function NavBar() {
                     ))}
                 </div>
                 <div className="flex items-center justify-self-end space-x-4">
-                    <Switch onChange={toggleTheme} checked={value === "dark"} />
+                    <ThemeToggle
+                        isDarkMode={theme === "dark"}
+                        onToggle={toggleTheme}
+                    />
                     <button
                         type="button"
                         aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                         aria-expanded={isMenuOpen}
                         aria-controls="mobile-navigation"
-                        className="flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1 rounded text-foreground hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:hidden"
+                        className="flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1 rounded text-foreground theme-transition hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:hidden"
                         onClick={() => setMenuOpen(!isMenuOpen)}
                     >
                         <span className="sr-only">{isMenuOpen ? "Close menu" : "Open menu"}</span>
@@ -105,4 +113,4 @@ function NavBar() {
     );
 }
 
-export default NavBar;
+export default Navbar;

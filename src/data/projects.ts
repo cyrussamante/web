@@ -1,34 +1,48 @@
 export const projectCategories = ["Web Apps", "Mobile", "Tools", "Other"] as const;
 export type ProjectCategory = (typeof projectCategories)[number];
+export const allProjectsFilter = "All" as const;
+export const projectFilters = [allProjectsFilter, ...projectCategories] as const;
+export type ProjectFilter = (typeof projectFilters)[number];
 
-type ProjectImage = {
-    src: string;
-    alt: string;
-};
+export const projectSortOptions = [
+    { value: "newest", label: "Newest first" },
+    { value: "oldest", label: "Oldest first" },
+    { value: "alphabetical", label: "A\u2013Z" },
+] as const;
+export type ProjectSortOrder = (typeof projectSortOptions)[number]["value"];
 
-export type Project = {
-    id: string;
-    title: string;
-    description?: string;
-    category: ProjectCategory;
-    featuredOrder?: number;
-    year?: number;
-    dateRange?: string;
-    collaborators?: string[];
-    technologies?: string[];
-    previewImage?: ProjectImage;
-    relatedProjectIds?: string[];
-    links: {
-        label: string;
-        href: string;
-        variant?: "secondary" | "text";
-    }[];
-    overview?: string;
-    features?: string[];
-    screenshots?: ProjectImage[];
-};
+interface ProjectImage {
+    readonly src: string;
+    readonly darkSrc?: string;
+    readonly alt: string;
+    readonly zoom?: number;
+    readonly fit?: "cover" | "contain";
+}
 
-export const projects: Project[] = [
+interface ProjectLink {
+    readonly label: string;
+    readonly href: string;
+    readonly variant?: "secondary" | "text";
+}
+
+export interface Project {
+    readonly id: string;
+    readonly title: string;
+    readonly description?: string;
+    readonly category: ProjectCategory;
+    readonly featuredOrder?: number;
+    readonly year?: number;
+    readonly dateRange?: string;
+    readonly collaborators?: readonly string[];
+    readonly technologies?: readonly string[];
+    readonly previewImage?: ProjectImage;
+    readonly links: readonly ProjectLink[];
+    readonly overview?: string;
+    readonly features?: readonly string[];
+    readonly screenshots?: readonly ProjectImage[];
+}
+
+export const projects: readonly Project[] = [
     {
         id: "renewable-technology-challenge",
         title: "Renewable Technology Challenge",
@@ -38,6 +52,10 @@ export const projects: Project[] = [
         dateRange: "Sep 2021 \u2013 Oct 2021",
         collaborators: ["Swesan Pathmanathan", "Manisha Kohli", "Patricia Girgis"],
         technologies: ["GRANTA EduPack", "Autodesk Inventor"],
+        previewImage: {
+            src: "/images/projects/wind-turbine-design.png",
+            alt: "Wind turbine blade displacement simulation",
+        },
         overview:
             "Developed a wind-energy design recommendation for Quetzaltenango, Guatemala, comparing blade materials against cost, local weather, and the power needs of small electrical devices.",
         features: [
@@ -56,6 +74,10 @@ export const projects: Project[] = [
         dateRange: "Oct 2021 \u2013 Nov 2021",
         collaborators: ["Aryana Zarringhalam"],
         technologies: ["Python", "Quanser Interactive Labs", "Raspberry Pi"],
+        previewImage: {
+            src: "/images/projects/get-a-grip.png",
+            alt: "Simulated robotic arm sorting containers in a rehabilitation lab",
+        },
         overview:
             "Designed and simulated a remote-sensing and actuation system that routes sterilization containers to an autoclave based on their size and color.",
         features: [
@@ -74,6 +96,10 @@ export const projects: Project[] = [
         dateRange: "Jan 2022 \u2013 Feb 2022",
         collaborators: ["Joseph Petrasek"],
         technologies: ["Autodesk Inventor", "3D printing"],
+        previewImage: {
+            src: "/images/projects/recycling-hopper.png",
+            alt: "3D-printed rotary mechanism attached to a recycling hopper",
+        },
         overview:
             "Designed and built a physical mechanism that attaches to a recycling hopper and converts rotary actuator motion into linear motion to release recyclable containers.",
         features: [
@@ -91,6 +117,10 @@ export const projects: Project[] = [
         year: 2022,
         dateRange: "Dec 2022",
         technologies: ["Python", "Tkinter"],
+        previewImage: {
+            src: "/images/projects/grades2date.png",
+            alt: "Grades2Date gradebook showing course grades, unit counts, and calculated GPA",
+        },
         overview:
             "Built a Python desktop application that organizes coursework into reusable profiles and calculates grades and GPA from course weightings. It can also combine courses into a yearly GPA using either a 4-point or 12-point scale.",
         features: [
@@ -113,6 +143,10 @@ export const projects: Project[] = [
         category: "Other",
         year: 2023,
         collaborators: ["Sydney Durigon", "Emile Gennaro", "Clara Yaromich"],
+        previewImage: {
+            src: "/images/projects/source-water-monitoring.jpg",
+            alt: "Aerial view from a small aircraft surveying a lake and shoreline for water monitoring",
+        },
         overview:
             "Developed a feasibility-informed design plan for automated source-water monitoring in the Rainy Lake of the Woods region. The proposal focused on early algal-bloom detection and accounted for operational, privacy, environmental, and regulatory constraints.",
         features: [
@@ -131,6 +165,10 @@ export const projects: Project[] = [
         year: 2023,
         dateRange: "Jan 2023 \u2013 Feb 2023",
         technologies: ["Java", "Maven", "Log4j", "Git"],
+        previewImage: {
+            src: "/images/projects/pirate-ship-illustration.webp",
+            alt: "Vintage sailing ship illustration used as artwork for the Piraten Kapern simulator",
+        },
         overview:
             "Created a two-player command-line simulator for Piraten Kapern. Players can use different dice-rolling strategies based on a drawn fortune card or a strategy provided through command-line arguments.",
         features: [
@@ -143,68 +181,95 @@ export const projects: Project[] = [
     {
         id: "mesh-generation",
         title: "Mesh Generation",
-        description: "Established the mesh-generation foundation later extended into seeded terrain and procedurally generated urban layouts.",
+        description: "Built a modular Java generator for square, diamond, and hexagonal meshes, with safeguards against duplicate geometry.",
         category: "Other",
         year: 2023,
         collaborators: ["Hady Ibrahim", "Richard Li"],
         technologies: ["Java", "JUnit"],
-        relatedProjectIds: ["terrain-generation", "urbanism"],
+        previewImage: {
+            src: "/images/projects/mesh-generation.png",
+            alt: "Generated irregular polygon mesh visualization",
+        },
         overview:
-            "Built the first stage of a shared procedural-generation codebase: generating a mesh selected by the user. This foundation was later extended through the Terrain Generation and Urbanism projects.",
+            "Designed a reusable mesh-generation library that builds selected mesh types from connected vertices, segments, and polygons. A shared Mesh abstraction and dedicated geometry types keep generation modular, while consistent ordering and duplicate-aware collections preserve mesh structure.",
         features: [
-            "Implemented user-selected mesh generation as the starting point for the later terrain and urban-generation stages.",
+            "Generated square, diamond, and hexagonal tessellations through a shared mesh interface.",
+            "Separated vertices, segments, and polygons into dedicated geometry components.",
+            "Prevented duplicate geometry and maintained consistent ordering for mesh elements.",
+            "Included normal and debug visualization modes, with debug mode showing polygon neighbors.",
         ],
         links: [],
     },
     {
         id: "terrain-generation",
         title: "Terrain Generation",
-        description: "Generated reproducible, biome-driven 2D terrain and validated outputs with 5+ JUnit suites across 100+ landscapes.",
+        description: "Built seeded island generation with selectable shapes, climate-based biomes, and lakes, rivers, and aquifers.",
         category: "Other",
         year: 2023,
         dateRange: "Mar 2023",
         collaborators: ["Hady Ibrahim", "Richard Li"],
-        relatedProjectIds: ["mesh-generation", "urbanism"],
         technologies: ["Java", "JUnit"],
+        previewImage: {
+            src: "/images/projects/terrain-generation.png",
+            alt: "Procedurally generated island with distinct terrain biomes and lakes",
+        },
         overview:
-            "Extended the shared codebase with a 2D terrain generator that accepts user-defined biome inputs and uses a seed to reproduce generated landscapes.",
+            "Extended the shared Java mesh foundation into a configurable island generator. The system combines island shapes, elevation, water features, and climate-based biome classification; a user-provided seed can reproduce the same generated island.",
         features: [
-            "Used a fixed seed to reproduce and inspect more than 100 generated landscapes.",
-            "Created more than five JUnit test suites to support quality assurance.",
-            "Built on the shared codebase established by Mesh Generation and later extended by Urbanism.",
+            "Generated islands with selectable shapes and terrain features.",
+            "Classified regions into biomes using selectable American or Asian Whittaker diagrams.",
+            "Generated lakes, rivers that flow from higher elevations, and aquifers.",
+            "Accepted and returned a seed so an island could be regenerated consistently.",
+            "Tested feature rules including biome classification, elevation profiles, and lake generation.",
         ],
         links: [],
     },
     {
         id: "urbanism",
         title: "Urbanism",
-        description: "Extended procedural terrain with generated roads, cities, and routes connecting locations to capital cities.",
+        description: "Added cities and capital locations to generated islands, with star- and mesh-style road networks and routes to capitals.",
         category: "Other",
         year: 2023,
+        previewImage: {
+            src: "/images/projects/urbanism.jpg",
+            alt: "Aerial view of a suburban neighborhood with winding roads branching between clusters of houses",
+        },
         overview:
-            "Extended the shared terrain-generation codebase with an urban layer that adds roads, cities, and capital cities, then generates paths connecting locations to capital cities.",
+            "Extended the procedural island generator with an urban layer. It places cities and capital locations, builds configurable road networks, and adapts island geometry into a graph for routing between locations and capitals.",
+        features: [
+            "Added cities and capital locations to generated islands.",
+            "Generated star- or mesh-style road networks.",
+            "Converted island geometry into a graph for pathfinding between locations and capital cities.",
+            "Used separate city and road factories to select implementations from user input.",
+        ],
         technologies: ["Java", "JUnit"],
-        relatedProjectIds: ["mesh-generation", "terrain-generation"],
         links: [],
     },
     {
         id: "cyrussamante-com",
         title: "Personal Portfolio Website",
-        description: "Revamped a portfolio to showcase 5+ projects and streamline résumé access; the 2023 iteration was associated with a 65% increase in résumé access.",
+        description: "Built this portfolio from scratch in React and TypeScript, with a project catalog, filtering, and an accessible modal gallery.",
         category: "Web Apps",
-        year: 2023,
-        dateRange: "Apr 2022; revamped Jun 2023 \u2013 Jul 2023",
-        technologies: ["HTML", "CSS", "JavaScript", "Ruby on Rails", "Figma"],
+        year: 2026,
+        dateRange: "2026",
+        technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "React Router"],
+        previewImage: {
+            src: "/images/projects/cyrussamante-com-light.png",
+            darkSrc: "/images/projects/cyrussamante-com-dark.png",
+            alt: "This portfolio website's home page",
+        },
         overview:
-            "Built and revamped a personal portfolio website across two iterations, organizing project details, skills, resume access, and contact information. The 2023 version was associated with a 65% increase in resume access. This is the legacy portfolio, not the current website.",
+            "Built this personal portfolio website as a React and TypeScript single-page app. It includes category filtering and sorting on the Projects page, an accessible modal with keyboard navigation between projects, and a light/dark theme toggle.",
         features: [
-            "Presented more than five projects with links to additional information.",
+            "Filters and sorts projects by category, date, and title.",
+            "Browses project details through a keyboard-navigable modal with left/right project switching.",
+            "Supports light and dark themes with a persisted user preference.",
             "Made resume and contact information directly accessible.",
         ],
         links: [
             {
                 label: "View source code",
-                href: "https://github.com/cyrussamante/portfolio-website",
+                href: "https://github.com/cyrussamante/web",
             },
         ],
     },
@@ -217,6 +282,11 @@ export const projects: Project[] = [
         year: 2023,
         dateRange: "Jul 2023 \u2013 Aug 2023",
         technologies: ["Java", "Java Swing"],
+        previewImage: {
+            src: "/images/projects/pathfinding-visualizer.png",
+            alt: "Pathfinding Visualizer showing a completed Dijkstra route across a grid board",
+            fit: "contain",
+        },
         overview:
             "Built an interactive Java Swing application that makes graph-search algorithms observable through step-by-step visualizations.",
         features: [
@@ -239,6 +309,11 @@ export const projects: Project[] = [
         year: 2024,
         dateRange: "Apr 2024",
         technologies: ["Java", "Firebase", "Git"],
+        previewImage: {
+            src: "/images/projects/guardian-messenger.png",
+            alt: "Guardian Messenger Android app showing an encrypted message conversation",
+            fit: "contain",
+        },
         overview:
             "Led a five-person team in developing an Android messaging application with Java and Firebase, including DES-based message encryption.",
         features: [
@@ -261,6 +336,10 @@ export const projects: Project[] = [
         year: 2025,
         dateRange: "Sep 2024 \u2013 Apr 2025",
         technologies: ["C++", "Python", "Docker", "GitLab CI/CD", "MuJoCo"],
+        previewImage: {
+            src: "/images/projects/tangled-program-graphs.jpg",
+            alt: "Tangled Program Graphs capstone project poster",
+        },
         overview:
             "Developed a modular C++ framework for training and evaluating Tangled Program Graph (TPG) controllers in MuJoCo, connecting the TPG engine to simulator feedback for policy learning.",
         features: [

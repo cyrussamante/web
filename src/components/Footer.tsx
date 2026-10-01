@@ -1,9 +1,9 @@
 import ActionLink from "./ActionLink";
+import { getContactEmailHref } from "../utils/email";
 
 const socialLinks = [
     { label: "GitHub", href: "https://github.com/cyrussamante" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/cyrussamante" },
-    { label: "Email", href: "mailto:contact@cyrussamante.com" },
 ];
 
 function Footer() {
@@ -22,9 +22,10 @@ function Footer() {
                             {label}
                         </a>
                     ))}
+                    <a href={getContactEmailHref()}>Email</a>
                 </div>
-                <div className="text-sm font-medium text-accent">
-                    <ActionLink href="mailto:contact@cyrussamante.com" variant="text" showArrow={true}>Get in Touch</ActionLink>
+                <div className="text-sm font-medium text-accent theme-transition">
+                    <ActionLink href={getContactEmailHref()} variant="text" showArrow={true}>Get in Touch</ActionLink>
                 </div>
                 <div className="text-xs text-muted theme-transition sm:text-right">
                     &copy; {new Date().getFullYear()} Cyruss Amante

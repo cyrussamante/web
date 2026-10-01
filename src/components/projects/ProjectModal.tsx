@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { AnimationEvent, MouseEvent } from "react";
+import type { AnimationEvent, KeyboardEvent, MouseEvent } from "react";
 import type { Project } from "../../data/projects";
 import ActionLink from "../ActionLink";
 import ProjectMedia from "./ProjectMedia";
@@ -8,10 +8,17 @@ import ProjectBadges from "./ProjectBadges";
 
 interface ProjectModalProps {
     project: Project;
+    projectSequence: readonly Project[];
+    onNavigate: (project: Project) => void;
     onClose: () => void;
 }
 
-function ProjectModal({ project, onClose }: ProjectModalProps) {
+function ProjectModal({
+    project,
+    projectSequence,
+    onNavigate,
+    onClose,
+}: ProjectModalProps) {
     const dialogRef = useRef<HTMLDialogElement>(null);
     const closeTimeoutRef = useRef<number | null>(null);
     const closeStartedRef = useRef(false);
@@ -33,6 +40,28 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
 
     function handleBackdropClick(event: MouseEvent<HTMLDialogElement>) {
         if (event.target === event.currentTarget) requestClose();
+    }
+
+    function handleKeyDown(event: KeyboardEvent<HTMLDialogElement>) {
+        if (
+            isClosing ||
+            event.altKey ||
+            event.ctrlKey ||
+            event.metaKey ||
+            event.shiftKey ||
+            (event.target instanceof Element &&
+                event.target.closest("input, textarea, select, [contenteditable='true']"))
+        ) {
+            return;
+        }
+
+        if (event.key === "ArrowLeft" && previousProject) {
+            event.preventDefault();
+            onNavigate(previousProject);
+        } else if (event.key === "ArrowRight" && nextProject) {
+            event.preventDefault();
+            onNavigate(nextProject);
+        }
     }
 
     function requestClose() {
@@ -58,6 +87,15 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
         }
     }
 
+    const currentIndex = projectSequence.findIndex(
+        (sequenceProject) => sequenceProject.id === project.id,
+    );
+    const previousProject =
+        currentIndex > 0 ? projectSequence[currentIndex - 1] : undefined;
+    const nextProject =
+        currentIndex >= 0 && currentIndex < projectSequence.length - 1
+            ? projectSequence[currentIndex + 1]
+            : undefined;
     const date = project.dateRange ?? project.year?.toString();
 
     return (
@@ -66,6 +104,7 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
             aria-labelledby="project-modal-title"
             data-closing={isClosing || undefined}
             onAnimationEnd={handleAnimationEnd}
+            onKeyDown={handleKeyDown}
             onCancel={(event) => {
                 event.preventDefault();
                 requestClose();
@@ -103,6 +142,7 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
                         </div>
                         <h2
                             id="project-modal-title"
+                            aria-live="polite"
                             className="mt-5 pr-8 text-2xl font-bold leading-tight text-foreground theme-transition sm:text-3xl"
                         >
                             {project.title}
@@ -139,7 +179,7 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
                             <section aria-labelledby="project-overview-heading">
                                 <h3
                                     id="project-overview-heading"
-                                    className="text-xs font-semibold uppercase tracking-[0.16em] text-accent"
+                                    className="text-xs font-semibold uppercase tracking-[0.16em] text-accent theme-transition"
                                 >
                                     Project Overview
                                 </h3>
@@ -155,7 +195,7 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
                                                 key={feature}
                                                 className="flex gap-3 text-sm leading-6 text-secondary theme-transition"
                                             >
-                                                <span aria-hidden="true" className="text-accent">✓</span>
+                                                <span aria-hidden="true" className="text-accent theme-transition">✓</span>
                                                 <span>{feature}</span>
                                             </li>
                                         ))}
@@ -173,7 +213,7 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
                                             src={screenshot.src}
                                             alt={screenshot.alt}
                                             loading="lazy"
-                                            className="aspect-16/10 w-full rounded-lg border border-border object-cover"
+                                            className="aspect-16/10 w-full rounded-lg border border-border object-cover theme-transition"
                                         />
                                     ))}
                                 </div>
@@ -186,7 +226,7 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
                             <section aria-labelledby="project-tech-heading">
                                 <h3
                                     id="project-tech-heading"
-                                    className="text-xs font-semibold uppercase tracking-[0.16em] text-accent"
+                                    className="text-xs font-semibold uppercase tracking-[0.16em] text-accent theme-transition"
                                 >
                                     Technologies
                                 </h3>
@@ -202,7 +242,7 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
                             >
                                 <h3
                                     id="project-collaborators-heading"
-                                    className="text-xs font-semibold uppercase tracking-[0.16em] text-accent"
+                                    className="text-xs font-semibold uppercase tracking-[0.16em] text-accent theme-transition"
                                 >
                                     Collaborators
                                 </h3>
@@ -220,6 +260,50 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
                         )}
                     </aside>
                 </div>
+                {projectSequence.length > 1 && (
+                    <nav
+                        aria-label="Project navigation"
+                        className="mt-8 flex items-center justify-between border-t border-border pt-5 theme-transition"
+                    >
+                        <button
+                            type="button"
+                            aria-label={
+                                previousProject
+                                    ? `Previous project: ${previousProject.title}`
+                                    : "No previous project"
+                            }
+                            aria-keyshortcuts="ArrowLeft"
+                            disabled={!previousProject || isClosing}
+                            onClick={() => {
+                                if (previousProject) onNavigate(previousProject);
+                            }}
+                            className="inline-flex min-h-10 items-center gap-2 rounded-lg px-3 text-sm font-medium text-secondary theme-transition hover:bg-page hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-40"
+                        >
+                            <span aria-hidden="true">←</span>
+                            <span>Previous</span>
+                        </button>
+                        <p className="text-xs tabular-nums text-muted theme-transition">
+                            {currentIndex + 1} / {projectSequence.length}
+                        </p>
+                        <button
+                            type="button"
+                            aria-label={
+                                nextProject
+                                    ? `Next project: ${nextProject.title}`
+                                    : "No next project"
+                            }
+                            aria-keyshortcuts="ArrowRight"
+                            disabled={!nextProject || isClosing}
+                            onClick={() => {
+                                if (nextProject) onNavigate(nextProject);
+                            }}
+                            className="inline-flex min-h-10 items-center gap-2 rounded-lg px-3 text-sm font-medium text-secondary theme-transition hover:bg-page hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-40"
+                        >
+                            <span>Next</span>
+                            <span aria-hidden="true">→</span>
+                        </button>
+                    </nav>
+                )}
             </div>
         </dialog>
     );

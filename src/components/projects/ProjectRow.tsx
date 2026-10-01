@@ -18,7 +18,7 @@ function ProjectRow({ project, number, onSelect, animationDelay }: ProjectRowPro
             style={{ animationDelay: `${animationDelay}ms` }}
             className="motion-fade-up group grid w-full cursor-pointer gap-5 border-b border-border py-6 text-left theme-transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:grid-cols-[2rem_minmax(0,1fr)_minmax(10rem,0.7fr)_1.5rem] md:items-center md:gap-5"
         >
-            <span className="self-start pt-0.5 text-xl font-medium tabular-nums text-accent md:text-2xl">
+            <span className="self-start pt-0.5 text-xl font-medium tabular-nums text-accent theme-transition md:text-2xl">
                 {number}
             </span>
             <span className="flex min-w-0 flex-col items-start">
@@ -34,11 +34,11 @@ function ProjectRow({ project, number, onSelect, animationDelay }: ProjectRowPro
             </span>
             <ProjectMedia
                 project={project}
-                className="w-full max-w-56 transition-colors duration-300 group-hover:border-accent/60 group-focus-visible:border-accent/60 motion-reduce:transition-none md:justify-self-end"
+                className="w-full max-w-56 group-hover:border-accent/60 group-focus-visible:border-accent/60 md:justify-self-end"
             />
             <span
                 aria-hidden="true"
-                className="text-lg text-accent transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none md:justify-self-end"
+                className="text-lg text-accent theme-transition transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none md:justify-self-end"
             >
                 →
             </span>

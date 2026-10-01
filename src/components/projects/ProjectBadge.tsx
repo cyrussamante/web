@@ -7,11 +7,13 @@ interface ProjectBadgeProps {
     variant?: ProjectBadgeVariant;
 }
 
+const accentBadgeClasses = "border border-accent/50 bg-surface text-accent uppercase tracking-wide";
+
 const variantClasses: Record<ProjectBadgeVariant, string> = {
     technology: "border border-border bg-page text-secondary",
-    category: "border border-accent/50 bg-surface text-accent uppercase tracking-wide",
+    category: accentBadgeClasses,
     date: "border border-border bg-page text-muted",
-    featured: "border border-accent/50 bg-surface text-accent uppercase tracking-wide",
+    featured: accentBadgeClasses,
     overflow: "border border-border bg-page text-muted",
 };
 

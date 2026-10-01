@@ -1,3 +1,4 @@
+import useTheme from "../../context/useTheme";
 import type { Project } from "../../data/projects";
 
 interface ProjectMediaProps {
@@ -6,7 +7,10 @@ interface ProjectMediaProps {
 }
 
 function ProjectMedia({ project, className = "" }: ProjectMediaProps) {
+    const { theme } = useTheme();
     const image = project.previewImage;
+    const imageSrc = theme === "dark" && image?.darkSrc ? image.darkSrc : image?.src;
+    const imageFitClass = image?.fit === "contain" ? "object-contain" : "object-cover";
     const initials = project.title
         .split(/\s+/)
         .filter((word) => /[a-z0-9]/i.test(word))
@@ -21,16 +25,17 @@ function ProjectMedia({ project, className = "" }: ProjectMediaProps) {
         >
             {image ? (
                 <img
-                    src={image.src}
+                    src={imageSrc}
                     alt={image.alt}
-                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none"
+                    style={image.zoom ? { scale: image.zoom } : undefined}
+                    className={`absolute inset-0 h-full w-full ${imageFitClass} transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none`}
                     loading="lazy"
                 />
             ) : (
                 <span
                     role="img"
                     aria-label={`${project.title} preview image coming soon`}
-                    className="flex h-full w-full flex-col items-center justify-center gap-3 bg-page p-5 text-center theme-transition"
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-page p-5 text-center theme-transition"
                 >
                     <span
                         aria-hidden="true"

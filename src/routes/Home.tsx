@@ -1,22 +1,23 @@
-import { useState } from "react";
 import ActionLink from "../components/ActionLink";
 import Divider from "../components/Divider";
 import SectionLabel from "../components/SectionLabel";
 import ProjectModal from "../components/projects/ProjectModal";
 import ProjectRow from "../components/projects/ProjectRow";
-import { projects, type Project } from "../data/projects";
+import { education } from "../data/experience";
+import { projects } from "../data/projects";
+import useProjectModal from "../hooks/useProjectModal";
+import usePageMetadata from "../hooks/usePageMetadata";
+import { getFeaturedProjects } from "../utils/projects";
+import { getContactEmailHref } from "../utils/email";
 
-type FeaturedProject = Project & { featuredOrder: number };
-
-function isFeaturedProject(project: Project): project is FeaturedProject {
-    return project.featuredOrder !== undefined;
-}
+const featuredProjects = getFeaturedProjects(projects);
 
 function Home() {
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-    const featuredProjects = projects
-        .filter(isFeaturedProject)
-        .sort((first, second) => first.featuredOrder - second.featuredOrder);
+    const { selectedProject, openProject, closeProject } = useProjectModal();
+    usePageMetadata(
+        "Software Developer",
+        "Cyruss Amante is a GTA-based software developer building full-stack web applications with React, TypeScript, and Java/Spring Boot.",
+    );
 
     return (
         <main>
@@ -33,7 +34,7 @@ function Home() {
                         <ActionLink href="/projects" showArrow>
                             View My Projects
                         </ActionLink>
-                        <ActionLink href="mailto:contact@cyrussamante.com" variant="text">
+                        <ActionLink href={getContactEmailHref()} variant="text">
                             Get in Touch
                         </ActionLink>
                     </div>
@@ -43,13 +44,13 @@ function Home() {
                     style={{ animationDelay: "120ms" }}
                 >
                     <div aria-hidden="true" className="absolute -right-3 -top-3 h-full w-full border border-accent/60" />
-                    <div
-                        role="img"
-                        aria-label="Portrait placeholder"
-                        className="relative grid aspect-4/3 place-items-center border border-border bg-surface text-3xl font-semibold tracking-widest text-muted theme-transition"
-                    >
-                        CA
-                    </div>
+                    <img
+                        src="/images/profile.jpg"
+                        alt="Portrait of Cyruss Amante"
+                        draggable={false}
+                        onContextMenu={(event) => event.preventDefault()}
+                        className="relative aspect-4/5 w-full border border-border object-cover object-[85%_center] select-none theme-transition"
+                    />
                 </div>
             </section>
             <Divider />
@@ -61,13 +62,13 @@ function Home() {
                 <div className="mt-4 grid gap-6 md:grid-cols-2 md:items-center md:gap-10">
                     <div>
                         <h2 className="text-2xl font-bold text-foreground theme-transition">University</h2>
-                        <p className="mt-1 text-sm text-foreground theme-transition">B.Eng. in Software Engineering</p>
-                        <p className="mt-1 text-sm text-secondary theme-transition">McMaster University</p>
-                        <p className="mt-2 text-xs text-muted theme-transition">2021 - 2025</p>
+                        <p className="mt-1 text-sm text-foreground theme-transition">{education.qualification}</p>
+                        <p className="mt-1 text-sm text-secondary theme-transition">{education.organization}</p>
+                        <p className="mt-2 text-xs text-muted theme-transition">{education.period}</p>
 
                     </div>
                     <p className="max-w-xl text-sm leading-6 text-secondary theme-transition md:border-l md:border-border md:pl-8">
-                        My Software Engineering degree at McMaster strengthened my foundation in programming, algorithms, software design, and testing. It taught me to approach complex technical problems methodically and build software with reliability, maintainability, and real-world needs in mind.
+                        {education.summary}
                     </p>
                 </div>
             </section>
@@ -94,7 +95,7 @@ function Home() {
                             key={project.id}
                             project={project}
                             number={String(index + 1).padStart(2, "0")}
-                            onSelect={setSelectedProject}
+                            onSelect={openProject}
                             animationDelay={100 + index * 35}
                         />
                     ))}
@@ -104,7 +105,9 @@ function Home() {
             {selectedProject && (
                 <ProjectModal
                     project={selectedProject}
-                    onClose={() => setSelectedProject(null)}
+                    projectSequence={featuredProjects}
+                    onNavigate={openProject}
+                    onClose={closeProject}
                 />
             )}
         </main>

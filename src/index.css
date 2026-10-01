@@ -87,7 +87,10 @@
   transition:
     opacity 200ms ease,
     transform 200ms ease,
-    visibility 0s linear 200ms;
+    visibility 0s linear 200ms,
+    color 300ms ease,
+    background-color 300ms ease,
+    border-color 300ms ease;
 }
 
 .mobile-nav-panel[data-open="true"] {
@@ -95,13 +98,20 @@
   pointer-events: auto;
   transform: translateY(0);
   visibility: visible;
+  transition:
+    color 300ms ease,
+    background-color 300ms ease,
+    border-color 300ms ease;
 }
 
 .mobile-nav-panel[data-open="true"][data-animate="true"] {
   transition:
     opacity 200ms ease,
     transform 200ms ease,
-    visibility 0s;
+    visibility 0s,
+    color 300ms ease,
+    background-color 300ms ease,
+    border-color 300ms ease;
 }
 
 @media (min-width: 768px) {
@@ -111,23 +121,28 @@
     pointer-events: auto;
     transform: none;
     visibility: visible;
+    transition:
+      color 300ms ease,
+      background-color 300ms ease,
+      border-color 300ms ease;
   }
-}
-
-@media (min-width: 768px) {
-  .mobile-nav-panel,
   .mobile-nav-panel[data-animate="true"],
-  .mobile-nav-panel[data-open="true"],
   .mobile-nav-panel[data-open="true"][data-animate="true"] {
-    transition: none !important;
+    transition:
+      color 300ms ease,
+      background-color 300ms ease,
+      border-color 300ms ease;
   }
 }
 
 @utility project-card-motion {
+  /* Color-related properties match theme-transition's duration/easing so
+     theme toggles animate in sync across the whole page; only the
+     hover-only properties use the quicker ease-out curve. */
   transition:
-    color 300ms ease-out,
-    background-color 300ms ease-out,
-    border-color 300ms ease-out,
+    color 300ms ease,
+    background-color 300ms ease,
+    border-color 300ms ease,
     transform 300ms ease-out,
     box-shadow 300ms ease-out,
     opacity 300ms ease-out;
@@ -168,8 +183,6 @@ dialog[open][data-closing]::backdrop {
     transform: none;
   }
 
-  .mobile-nav-panel,
-  .mobile-nav-panel[data-open="true"],
   .mobile-nav-panel[data-animate="true"],
   .mobile-nav-panel[data-open="true"][data-animate="true"] {
     transition: none;

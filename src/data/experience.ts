@@ -1,22 +1,32 @@
 export interface ExperienceRole {
-    id: string;
-    title: string;
-    period: string;
-    sortDate: string;
-    context?: string;
-    details: string[];
-    skills?: string[];
-    spotlight?: {
-        title: string;
-        description: string;
-        skills: string[];
+    readonly id: string;
+    readonly title: string;
+    readonly period: string;
+    readonly sortDate: string;
+    readonly context?: string;
+    readonly details: readonly string[];
+    readonly skills?: readonly string[];
+    readonly spotlight?: {
+        readonly title: string;
+        readonly description: string;
+        readonly skillsLabel: string;
+        readonly skills: readonly string[];
     };
 }
 
 export interface ExperienceOrganization {
-    id: string;
-    name: string;
-    roles: ExperienceRole[];
+    readonly id: string;
+    readonly name: string;
+    readonly displayOrder?: number;
+    readonly roles: readonly ExperienceRole[];
+}
+
+interface EducationRecord {
+    readonly qualification: string;
+    readonly organization: string;
+    readonly period: string;
+    readonly summary: string;
+    readonly details: readonly string[];
 }
 
 const introductionToProgrammingTaDetails = [
@@ -24,10 +34,11 @@ const introductionToProgrammingTaDetails = [
     "Evaluated tests and exams, giving clear, actionable feedback to support student progress.",
 ];
 
-export const professionalExperience: ExperienceOrganization[] = [
+export const professionalExperience: readonly ExperienceOrganization[] = [
     {
         id: "adp-current",
         name: "ADP",
+        displayOrder: 0,
         roles: [
             {
                 id: "adp-associate-application-developer",
@@ -37,12 +48,16 @@ export const professionalExperience: ExperienceOrganization[] = [
                 context: "Etobicoke, Ontario | Hybrid",
                 details: [
                     "One of the first developers on ADP Workforce Now On the Go Next Gen; contributed to its launch and 10+ new features, simplifying complex practitioner views and workflows for small-business owners.",
-                    "Support monthly major releases and production operations by investigating reported issues, analyzing application behavior, and contributing to deployment workflows.",
+                    "Built and maintained features across the Java/Spring Boot backend and React frontend, working within existing services and component patterns.",
+                    "Support monthly major releases and production operations by using Splunk to investigate reported issues, analyze application behavior, and trace errors across services.",
+                    "Contribute to deployment workflows and collaborate with practitioners and teammates to refine requirements and validate fixes.",
                 ],
+                skills: ["Java", "Spring Boot", "React", "Splunk", "Jenkins"],
                 spotlight: {
                     title: "AI engineering workflows",
                     description:
                         "Use structured prompts, reusable skills, GitHub Copilot, and Amazon Q in daily development. Apply Spec Kit, Atlassian MCP integrations, and plugins to bring project context into coding, documentation, and root-cause investigations.",
+                    skillsLabel: "AI development tools",
                     skills: [
                         "Prompt design",
                         "Agent skills",
@@ -178,17 +193,25 @@ export const professionalExperience: ExperienceOrganization[] = [
     },
 ];
 
-export const education = {
+export const education: EducationRecord = {
     qualification: "B.Eng. in Software Engineering",
     organization: "McMaster University",
     period: "2021 - 2025",
+    summary:
+        "My Software Engineering degree at McMaster strengthened my foundation in programming, algorithms, software design, and testing. It taught me to approach complex technical problems methodically and build software with reliability, maintainability, and real-world needs in mind.",
     details: [
         "Cumulative GPA: 11.2 / 12",
+        "Summa Cum Laude",
         "Dean's Honour List",
     ],
 };
 
-export const skillGroups = [
+interface SkillGroupData {
+    readonly title: string;
+    readonly skills: readonly string[];
+}
+
+export const skillGroups: readonly SkillGroupData[] = [
     {
         title: "AI and Modern Development",
         skills: [

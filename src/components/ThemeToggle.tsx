@@ -1,29 +1,29 @@
-interface SwitchProps {
-    checked: boolean;
-    onChange: () => void;
+interface ThemeToggleProps {
+    isDarkMode: boolean;
+    onToggle: () => void;
 }
 
-function Switch({ checked, onChange }: SwitchProps) {
-    const toggleOn = checked ? "translate-x-6" : "translate-x-1";
-    const trackColor = checked ? "bg-accent" : "bg-border";
+function ThemeToggle({ isDarkMode, onToggle }: ThemeToggleProps) {
+    const thumbPosition = isDarkMode ? "translate-x-6" : "translate-x-1";
+    const trackColor = isDarkMode ? "bg-accent" : "bg-border";
 
     return (
         <label className="cursor-pointer rounded-full">
             <input
                 aria-label="Toggle dark mode"
-                className="sr-only"
+                className="peer sr-only"
                 type="checkbox"
-                checked={checked}
-                onChange={onChange}
+                checked={isDarkMode}
+                onChange={onToggle}
             />
-            <span className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 motion-reduce:transition-none ${trackColor}`}>
-                <span className={`grid h-4 w-4 place-items-center rounded-full bg-white text-accent shadow-sm transition-transform duration-300 motion-reduce:transition-none ${toggleOn}`}>
+            <span className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 motion-reduce:transition-none peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent ${trackColor}`}>
+                <span className={`grid h-4 w-4 place-items-center rounded-full bg-white text-accent shadow-sm transition-transform duration-300 motion-reduce:transition-none ${thumbPosition}`}>
                     <svg
                         aria-hidden="true"
                         viewBox="0 0 20 20"
                         fill="none"
                         className={`absolute h-3 w-3 transition-all duration-300 motion-reduce:transition-none ${
-                            checked
+                            isDarkMode
                                 ? "rotate-90 scale-0 opacity-0"
                                 : "rotate-0 scale-100 opacity-100"
                         }`}
@@ -41,7 +41,7 @@ function Switch({ checked, onChange }: SwitchProps) {
                         viewBox="0 0 20 20"
                         fill="none"
                         className={`absolute h-3 w-3 transition-all duration-300 motion-reduce:transition-none ${
-                            checked
+                            isDarkMode
                                 ? "rotate-0 scale-100 opacity-100"
                                 : "-rotate-90 scale-0 opacity-0"
                         }`}
@@ -57,4 +57,4 @@ function Switch({ checked, onChange }: SwitchProps) {
     );
 }
 
-export default Switch;
+export default ThemeToggle;

@@ -1,41 +1,33 @@
 import { useState } from "react";
-import { projectCategories, projects, type Project } from "../data/projects";
+import {
+    allProjectsFilter,
+    projectFilters,
+    projectSortOptions,
+    projects,
+    type ProjectFilter,
+    type ProjectSortOrder,
+} from "../data/projects";
 import ProjectCard from "../components/projects/ProjectCard";
 import ProjectModal from "../components/projects/ProjectModal";
 import SectionLabel from "../components/SectionLabel";
-
-const categories = [
-    "All",
-    ...projectCategories,
-] as const;
-
-type ProjectSortOrder = "newest" | "oldest" | "alphabetical";
-
-const sortOptions: { value: ProjectSortOrder; label: string }[] = [
-    { value: "newest", label: "Newest first" },
-    { value: "oldest", label: "Oldest first" },
-    { value: "alphabetical", label: "A\u2013Z" },
-];
+import useProjectModal from "../hooks/useProjectModal";
+import usePageMetadata from "../hooks/usePageMetadata";
+import { filterAndSortProjects, isProjectSortOrder } from "../utils/projects";
 
 function Projects() {
-    const [activeCategory, setActiveCategory] = useState<(typeof categories)[number]>("All");
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [activeCategory, setActiveCategory] =
+        useState<ProjectFilter>(allProjectsFilter);
+    const { selectedProject, openProject, closeProject } = useProjectModal();
     const [sortOrder, setSortOrder] = useState<ProjectSortOrder>("newest");
-
-    const filteredProjects = projects
-        .filter((project) => activeCategory === "All" || project.category === activeCategory)
-        .sort((first, second) => {
-            if (sortOrder === "alphabetical") {
-                return first.title.localeCompare(second.title);
-            }
-
-            if (first.year === undefined) return second.year === undefined ? 0 : 1;
-            if (second.year === undefined) return -1;
-
-            return sortOrder === "newest"
-                ? second.year - first.year
-                : first.year - second.year;
-        });
+    usePageMetadata(
+        "Projects",
+        "A collection of personal projects, side builds, and experiments by Cyruss Amante, spanning React, TypeScript, and full-stack applications.",
+    );
+    const filteredProjects = filterAndSortProjects(
+        projects,
+        activeCategory,
+        sortOrder,
+    );
 
     return (
         <main className="py-12 sm:py-16">
@@ -59,7 +51,7 @@ function Projects() {
                         aria-label="Filter projects by category"
                         className="flex flex-wrap gap-x-6 gap-y-2"
                     >
-                        {categories.map((category) => {
+                        {projectFilters.map((category) => {
                             const isActive = activeCategory === category;
                             return (
                                 <button
@@ -92,17 +84,13 @@ function Projects() {
                                 value={sortOrder}
                                 onChange={(event) => {
                                     const value = event.target.value;
-                                    if (
-                                        value === "newest" ||
-                                        value === "oldest" ||
-                                        value === "alphabetical"
-                                    ) {
+                                    if (isProjectSortOrder(value)) {
                                         setSortOrder(value);
                                     }
                                 }}
                                 className="w-36 shrink-0 cursor-pointer appearance-none rounded-md border border-border bg-surface py-1.5 pl-2.5 pr-10 text-xs text-foreground theme-transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                             >
-                                {sortOptions.map((option) => (
+                                {projectSortOptions.map((option) => (
                                     <option key={option.value} value={option.value}>
                                         {option.label}
                                     </option>
@@ -112,7 +100,7 @@ function Projects() {
                                 aria-hidden="true"
                                 viewBox="0 0 16 16"
                                 fill="none"
-                                className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary"
+                                className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary theme-transition"
                             >
                                 <path
                                     d="m4 6 4 4 4-4"
@@ -127,7 +115,7 @@ function Projects() {
                 </div>
 
                 <p className="sr-only" aria-live="polite">
-                    Showing {filteredProjects.length} {activeCategory === "All" ? "" : `${activeCategory} `}
+                    Showing {filteredProjects.length} {activeCategory === allProjectsFilter ? "" : `${activeCategory} `}
                     {filteredProjects.length === 1 ? "project" : "projects"}
                 </p>
 
@@ -137,13 +125,13 @@ function Projects() {
                             <ProjectCard
                                 key={project.id}
                                 project={project}
-                                onSelect={setSelectedProject}
+                                onSelect={openProject}
                                 animationDelay={Math.min(index, 4) * 30}
                             />
                         ))}
                     </div>
                 ) : (
-                    <p className="py-12 text-center text-sm text-secondary">
+                    <p className="py-12 text-center text-sm text-secondary theme-transition">
                         No projects found in this category yet.
                     </p>
                 )}
@@ -152,7 +140,9 @@ function Projects() {
             {selectedProject && (
                 <ProjectModal
                     project={selectedProject}
-                    onClose={() => setSelectedProject(null)}
+                    projectSequence={filteredProjects}
+                    onNavigate={openProject}
+                    onClose={closeProject}
                 />
             )}
         </main>

@@ -3,8 +3,10 @@ import { createContext } from "react";
 export type Theme = "light" | "dark";
 
 export interface ThemeContextValue {
-    value: Theme;
+    theme: Theme;
     toggleTheme: () => void;
 }
 
-export const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+export const ThemeContext = createContext<ThemeContextValue | undefined>(
+    undefined,
+);

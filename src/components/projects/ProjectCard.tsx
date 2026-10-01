@@ -15,7 +15,7 @@ function ProjectCard({ project, onSelect, animationDelay }: ProjectCardProps) {
             onClick={() => onSelect(project)}
             aria-label={`View details for ${project.title}`}
             style={{ animationDelay: `${animationDelay}ms` }}
-            className="motion-fade-up project-card-motion group flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-xl border border-border bg-surface text-left shadow-sm theme-transition hover:-translate-y-1 hover:border-accent/60 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent dark:shadow-none dark:hover:shadow-none motion-reduce:transform-none"
+            className="motion-fade-up project-card-motion group flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-xl border border-border bg-surface text-left shadow-sm hover:-translate-y-1 hover:border-accent/60 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent dark:shadow-none dark:hover:shadow-none motion-reduce:transform-none"
         >
             <ProjectMedia
                 project={project}
@@ -28,7 +28,7 @@ function ProjectCard({ project, onSelect, animationDelay }: ProjectCardProps) {
                     </span>
                     <span
                         aria-hidden="true"
-                        className="shrink-0 text-accent transition-transform duration-300 group-hover:translate-x-0.5 motion-reduce:transition-none"
+                        className="shrink-0 text-accent theme-transition transition-transform duration-300 group-hover:translate-x-0.5 motion-reduce:transition-none"
                     >
                         →
                     </span>

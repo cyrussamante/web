@@ -1,75 +1,89 @@
-# React + TypeScript + Vite
+# cyrussamante.com
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My personal portfolio website, built from scratch with React, TypeScript, and Tailwind CSS. It showcases my projects, professional experience, and education, with a focus on performance, accessibility, and a clean, theme-aware UI.
 
-Currently, two official plugins are available:
+**Live site:** [cyrussamante.com](https://cyrussamante.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Projects** — a filterable, sortable grid of personal and academic projects, each with a detail modal supporting keyboard-friendly left/right navigation between projects, screenshots, technologies, and collaborators.
+- **Experience** — a chronological timeline of professional experience and education, with skill tags per role.
+- **Light/dark theme** — a toggle that respects the user's saved preference (and falls back to their OS preference), with consistent, synchronized color transitions across the entire page.
+- **Theme-aware images** — select preview images (like this site's own project card) swap between light- and dark-mode screenshots automatically.
+- **SEO** — per-route titles/descriptions, Open Graph and Twitter Card tags, JSON-LD structured data, `robots.txt`, and `sitemap.xml`.
+- **Adaptive favicon** — an SVG favicon that switches color scheme with the OS/browser, with `.ico`/PNG fallbacks for broader support.
+- **Scrape-resistant contact info** — the contact email is assembled at runtime rather than present as a literal string, to deter basic scraping while remaining fully functional and accessible.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/) for tooling and dev server
+- [React Router](https://reactrouter.com/) for client-side routing
+- [Tailwind CSS v4](https://tailwindcss.com/) for styling
+- [ESLint](https://eslint.org/) + [typescript-eslint](https://typescript-eslint.io/) for linting
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- [Node.js](https://nodejs.org/) (LTS recommended)
+- npm
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
 
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Starts a local dev server with hot module replacement at `http://localhost:5173`:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
+```
+
+### Linting
+
+```bash
+npm run lint
+```
+
+### Production Build
+
+Type-checks the project and builds an optimized production bundle to `dist/`:
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+Serves the built `dist/` output locally to sanity-check before deploying:
+
+```bash
+npm run preview
+```
+
+## Project Structure
 
 ```
+src/
+├── components/       # Shared UI components (Navbar, Footer, ActionLink, etc.)
+│   ├── experience/   # Components specific to the Experience page
+│   └── projects/     # Components specific to the Projects grid/modal
+├── context/          # Theme context/provider
+├── data/             # Static content: projects.ts, experience.ts
+├── hooks/            # Custom hooks (project modal state, page metadata)
+├── routes/           # Top-level route components (Home, Projects, Experience)
+└── utils/            # Helper functions (project filtering/sorting, email)
+public/
+├── images/           # Project screenshots and profile photo
+├── favicon.svg       # Adaptive favicon (+ .ico/PNG fallbacks)
+├── robots.txt
+└── sitemap.xml
+```
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
