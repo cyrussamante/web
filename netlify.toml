@@ -6,6 +6,16 @@
   NODE_VERSION = "24"
 
 [[redirects]]
+  from = "/projects"
+  to = "/software/projects"
+  status = 301
+
+[[redirects]]
+  from = "/experience"
+  to = "/software/experience"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

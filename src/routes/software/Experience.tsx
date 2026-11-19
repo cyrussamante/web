@@ -1,11 +1,11 @@
-import OrganizationTimeline from "../components/experience/OrganizationTimeline";
-import EducationSummary from "../components/experience/EducationSummary";
-import ScrollReveal from "../components/ScrollReveal";
-import SkillGroup from "../components/experience/SkillGroup";
-import SectionLabel from "../components/SectionLabel";
-import { professionalExperience, skillGroups } from "../data/experience";
-import { sortExperienceOrganizations } from "../utils/experience";
-import usePageMetadata from "../hooks/usePageMetadata";
+import OrganizationTimeline from "../../components/experience/OrganizationTimeline";
+import EducationSummary from "../../components/experience/EducationSummary";
+import ScrollReveal from "../../components/ScrollReveal";
+import SkillGroup from "../../components/experience/SkillGroup";
+import SectionLabel from "../../components/SectionLabel";
+import { professionalExperience, skillGroups } from "../../data/experience";
+import { sortExperienceOrganizations } from "../../utils/experience";
+import usePageMetadata from "../../hooks/usePageMetadata";
 
 function Experience() {
     const chronologicallySortedExperience =
@@ -13,6 +13,7 @@ function Experience() {
     usePageMetadata(
         "Experience",
         "Cyruss Amante's professional experience, education, and skills, including work with Java, Spring Boot, React, and Splunk.",
+        { path: "/software/experience" },
     );
 
     return (

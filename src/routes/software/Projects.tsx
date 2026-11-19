@@ -6,13 +6,13 @@ import {
     projects,
     type ProjectFilter,
     type ProjectSortOrder,
-} from "../data/projects";
-import ProjectCard from "../components/projects/ProjectCard";
-import ProjectModal from "../components/projects/ProjectModal";
-import SectionLabel from "../components/SectionLabel";
-import useProjectModal from "../hooks/useProjectModal";
-import usePageMetadata from "../hooks/usePageMetadata";
-import { filterAndSortProjects, isProjectSortOrder } from "../utils/projects";
+} from "../../data/projects";
+import ProjectCard from "../../components/projects/ProjectCard";
+import ProjectModal from "../../components/projects/ProjectModal";
+import SectionLabel from "../../components/SectionLabel";
+import useProjectModal from "../../hooks/useProjectModal";
+import usePageMetadata from "../../hooks/usePageMetadata";
+import { filterAndSortProjects, isProjectSortOrder } from "../../utils/projects";
 
 function Projects() {
     const [activeCategory, setActiveCategory] =
@@ -22,6 +22,7 @@ function Projects() {
     usePageMetadata(
         "Projects",
         "A collection of personal projects, side builds, and experiments by Cyruss Amante, spanning React, TypeScript, and full-stack applications.",
+        { path: "/software/projects" },
     );
     const filteredProjects = filterAndSortProjects(
         projects,

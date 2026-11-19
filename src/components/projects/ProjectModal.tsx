@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import type { AnimationEvent, KeyboardEvent, MouseEvent } from "react";
+import type { KeyboardEvent } from "react";
 import type { Project } from "../../data/projects";
+import useAnimatedDialog from "../../hooks/useAnimatedDialog";
 import ActionLink from "../ActionLink";
 import ProjectMedia from "./ProjectMedia";
 import ProjectBadge from "./ProjectBadge";
@@ -19,28 +19,8 @@ function ProjectModal({
     onNavigate,
     onClose,
 }: ProjectModalProps) {
-    const dialogRef = useRef<HTMLDialogElement>(null);
-    const closeTimeoutRef = useRef<number | null>(null);
-    const closeStartedRef = useRef(false);
-    const [isClosing, setIsClosing] = useState(false);
-
-    useEffect(() => {
-        const dialog = dialogRef.current;
-        if (!dialog) return;
-
-        dialog.showModal();
-
-        return () => {
-            if (closeTimeoutRef.current !== null) {
-                window.clearTimeout(closeTimeoutRef.current);
-            }
-            if (dialog.open) dialog.close();
-        };
-    }, []);
-
-    function handleBackdropClick(event: MouseEvent<HTMLDialogElement>) {
-        if (event.target === event.currentTarget) requestClose();
-    }
+    const { dialogRef, isClosing, requestClose, handleBackdropClick, handleAnimationEnd } =
+        useAnimatedDialog(onClose);
 
     function handleKeyDown(event: KeyboardEvent<HTMLDialogElement>) {
         if (
@@ -61,29 +41,6 @@ function ProjectModal({
         } else if (event.key === "ArrowRight" && nextProject) {
             event.preventDefault();
             onNavigate(nextProject);
-        }
-    }
-
-    function requestClose() {
-        if (closeStartedRef.current) return;
-        closeStartedRef.current = true;
-
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            onClose();
-            return;
-        }
-
-        setIsClosing(true);
-        closeTimeoutRef.current = window.setTimeout(onClose, 300);
-    }
-
-    function handleAnimationEnd(event: AnimationEvent<HTMLDialogElement>) {
-        if (event.target === event.currentTarget && event.animationName === "dialog-exit") {
-            if (closeTimeoutRef.current !== null) {
-                window.clearTimeout(closeTimeoutRef.current);
-                closeTimeoutRef.current = null;
-            }
-            onClose();
         }
     }
 

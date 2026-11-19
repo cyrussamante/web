@@ -5,8 +5,8 @@ import ThemeToggle from "./ThemeToggle";
 
 const links = [
     { name: "Home", path: "/" },
-    { name: "Projects", path: "/projects" },
-    { name: "Experience", path: "/experience" },
+    { name: "Software", path: "/software" },
+    { name: "Creative", path: "/creative" },
 ];
 const desktopViewport = "(min-width: 768px)";
 const menuTransitionSettleDelay = 250;
@@ -64,7 +64,7 @@ function Navbar() {
     }
 
     return (
-        <nav className="border-b border-border py-4 text-foreground theme-transition">
+        <nav aria-label="Primary" className="border-b border-border py-4 text-foreground theme-transition">
             <div className="relative mx-auto grid w-full max-w-7xl grid-cols-2 items-center px-6 sm:px-8 md:grid-cols-3 lg:px-12">
                 <div>
                     <NavLink to="/" className="whitespace-nowrap text-lg font-extrabold text-foreground theme-transition">
