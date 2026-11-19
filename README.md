@@ -115,7 +115,7 @@ All creative projects live in [`src/data/creativeProjects.ts`](./src/data/creati
 2. Copy the link (`https://drive.google.com/file/d/<FILE_ID>/view?usp=sharing`) and paste it as a `src`. The file ID is extracted automatically.
 3. Every Drive image, video, and PDF also shows an **Open original** link, because Drive does not always allow embedding. Folder links are not supported; use individual file links.
 
-Other supported sources: YouTube and Vimeo URLs, local files under `public/` (e.g. `/images/creative/poster.webp`, `/videos/clip.mp4`, `/docs/playbill.pdf`), and any public `https` image, video (`.mp4`, `.webm`, `.mov`), or PDF URL. Unsupported or broken links show a placeholder instead of breaking the page. Videos never autoplay and load only when played; PDFs load when scrolled into view.
+Other supported sources: YouTube and Vimeo URLs, local files under `public/` (e.g. `/images/creative/poster.webp`, `/videos/clip.mp4`, `/docs/playbill.pdf`), and any public `https` image, video (`.mp4`, `.webm`, `.mov`), or PDF URL. On phones, tapping play opens a full-screen player. Drive's embedded player has no mobile-friendly layout, so it is rendered wide and scaled down to show its compact control bar; for the best mobile playback, upload a compressed (e.g. 1080p) copy to YouTube as an unlisted video and use that link instead. Unsupported or broken links show a placeholder instead of breaking the page. Videos never autoplay and load only when played; PDFs load when scrolled into view.
 
 Media is optional. Projects without a cover image show a category icon and date on cards, and the modal drops the empty image and media areas, so use `description` and `overview` to tell the story until you have photos or video.
 
