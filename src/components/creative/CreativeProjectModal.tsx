@@ -85,7 +85,7 @@ function CreativeProjectModal({ project, projectSequence, onNavigate, onClose }:
                 <span aria-hidden="true" className="text-xl leading-none">×</span>
             </button>
 
-            <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-6 pt-16 sm:p-8 sm:pt-16 lg:p-10 lg:pt-10">
+            <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-4 pt-16 sm:p-8 sm:pt-16 lg:p-10 lg:pt-10">
                 <div className={hasCover ? "grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:items-start" : ""}>
                     {hasCover && (
                         <ProjectImage

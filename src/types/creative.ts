@@ -31,6 +31,8 @@ export interface VideoMediaItem extends BaseMediaItem {
     readonly type: "video";
     /** Optional preview image shown before the video is loaded. */
     readonly poster?: MediaSource;
+    /** Vertical (9:16) video; shown in a tall frame instead of a widescreen one. */
+    readonly portrait?: boolean;
 }
 
 export interface PdfMediaItem extends BaseMediaItem {

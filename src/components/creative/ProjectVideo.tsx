@@ -3,6 +3,10 @@ import type { VideoMediaItem } from "../../types/creative";
 import { resolveImage, resolveVideo } from "../../utils/media";
 import MediaPlaceholder from "./MediaPlaceholder";
 import ProjectImage from "./ProjectImage";
+import VideoSurface from "./VideoSurface";
+import VideoViewer from "./VideoViewer";
+
+const smallScreenQuery = "(max-width: 639px)";
 
 interface ProjectVideoProps {
     item: VideoMediaItem;
@@ -10,6 +14,7 @@ interface ProjectVideoProps {
 
 function ProjectVideo({ item }: ProjectVideoProps) {
     const [isActive, setIsActive] = useState(false);
+    const [isViewerOpen, setIsViewerOpen] = useState(false);
     const frameRef = useRef<HTMLDivElement>(null);
     const video = resolveVideo(item.src);
 
@@ -25,13 +30,26 @@ function ProjectVideo({ item }: ProjectVideoProps) {
     const posterSource = item.poster ?? (video.kind === "embed" && video.provider === "drive" ? item.src : undefined);
     const hasPoster = resolveImage(posterSource) !== null;
 
+    const posterUrl = hasPoster ? resolveImage(posterSource)?.sources[0] : undefined;
+
+    function handlePlay() {
+        // Small screens get a full-viewport player; inline embeds are too cramped there.
+        if (window.matchMedia(smallScreenQuery).matches) setIsViewerOpen(true);
+        else setIsActive(true);
+    }
+
     return (
         <figure>
-            <div ref={frameRef} className="relative aspect-video w-full overflow-hidden border border-border bg-black theme-transition">
+            <div
+                ref={frameRef}
+                className={`relative w-full overflow-hidden border border-border bg-black theme-transition ${
+                    item.portrait ? "mx-auto aspect-9/16 max-w-xs" : "aspect-video"
+                }`}
+            >
                 {!isActive ? (
                     <button
                         type="button"
-                        onClick={() => setIsActive(true)}
+                        onClick={handlePlay}
                         aria-label={`Play video: ${item.title}`}
                         className="group absolute inset-0 cursor-pointer focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-accent"
                     >
@@ -48,29 +66,13 @@ function ProjectVideo({ item }: ProjectVideoProps) {
                             </span>
                         </span>
                     </button>
-                ) : video.kind === "embed" ? (
-                    <iframe
-                        src={video.embedUrl}
-                        title={item.title}
-                        loading="lazy"
-                        allow="fullscreen; picture-in-picture; encrypted-media"
-                        allowFullScreen
-                        referrerPolicy="no-referrer"
-                        className="absolute inset-0 h-full w-full border-0"
-                    />
                 ) : (
-                    <video
-                        src={video.src}
-                        poster={hasPoster ? resolveImage(posterSource)?.sources[0] : undefined}
-                        controls
-                        preload="metadata"
-                        playsInline
-                        className="absolute inset-0 h-full w-full"
-                    >
-                        Your browser does not support embedded video.
-                    </video>
+                    <VideoSurface video={video} title={item.title} poster={posterUrl} />
                 )}
             </div>
+            {isViewerOpen && (
+                <VideoViewer video={video} title={item.title} poster={posterUrl} onClose={() => setIsViewerOpen(false)} />
+            )}
             <figcaption className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-xs text-muted theme-transition">
                 <span>{item.caption ?? item.title}</span>
                 <span className="flex items-center gap-4">
