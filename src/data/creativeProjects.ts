@@ -56,6 +56,7 @@ export const creativeProjects: readonly CreativeProject[] = [
             "Video recording and vocal recording for the JDL Come Alive music video.",
         responsibilities: ["Video recording", "Vocal recording"],
         skills: ["Video", "Vocal recording"],
+        media: [{ type: "video", title: "JDL Come Alive", src: "https://drive.google.com/file/d/1B7nttR-ENdp16eOKG2cU16TOF58lt3w_/view?usp=sharing" }],
     },
     {
         id: "mean-girls-jr",
