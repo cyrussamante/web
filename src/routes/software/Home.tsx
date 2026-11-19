@@ -1,14 +1,14 @@
-import ActionLink from "../components/ActionLink";
-import Divider from "../components/Divider";
-import SectionLabel from "../components/SectionLabel";
-import ProjectModal from "../components/projects/ProjectModal";
-import ProjectRow from "../components/projects/ProjectRow";
-import { education } from "../data/experience";
-import { projects } from "../data/projects";
-import useProjectModal from "../hooks/useProjectModal";
-import usePageMetadata from "../hooks/usePageMetadata";
-import { getFeaturedProjects } from "../utils/projects";
-import { getContactEmailHref } from "../utils/email";
+import ActionLink from "../../components/ActionLink";
+import Divider from "../../components/Divider";
+import SectionLabel from "../../components/SectionLabel";
+import ProjectModal from "../../components/projects/ProjectModal";
+import ProjectRow from "../../components/projects/ProjectRow";
+import { education } from "../../data/experience";
+import { projects } from "../../data/projects";
+import useProjectModal from "../../hooks/useProjectModal";
+import usePageMetadata from "../../hooks/usePageMetadata";
+import { getFeaturedProjects } from "../../utils/projects";
+import { getContactEmailHref } from "../../utils/email";
 
 const featuredProjects = getFeaturedProjects(projects);
 
@@ -17,6 +17,7 @@ function Home() {
     usePageMetadata(
         "Software Developer",
         "Cyruss Amante is a GTA-based software developer building full-stack web applications with React, TypeScript, and Java/Spring Boot.",
+        { path: "/software" },
     );
 
     return (
@@ -31,7 +32,7 @@ function Home() {
                         I&apos;m a GTA-based software developer who turns complex problems into reliable software. I combine full-stack development, testing, and AI-assisted tools to build practical solutions and improve how software is delivered.
                     </p>
                     <div className="mt-6 flex flex-wrap items-center gap-4">
-                        <ActionLink href="/projects" showArrow>
+                        <ActionLink href="/software/projects" showArrow>
                             View My Projects
                         </ActionLink>
                         <ActionLink href={getContactEmailHref()} variant="text">
@@ -82,7 +83,7 @@ function Home() {
                         <SectionLabel>FEATURED PROJECTS</SectionLabel>
                         <h2 className="mt-2 text-2xl font-bold text-foreground theme-transition">Projects</h2>
                     </div>
-                    <ActionLink href="/projects" variant="text" showArrow>
+                    <ActionLink href="/software/projects" variant="text" showArrow>
                         View All Projects
                     </ActionLink>
                 </div>
