@@ -16,7 +16,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
     return (
         <section aria-labelledby="featured-heading" className="motion-fade-up py-10 sm:py-12" style={{ animationDelay: "100ms" }}>
             <SectionLabel>FEATURED PROJECT</SectionLabel>
-            <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-end lg:gap-10">
+            <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-center lg:gap-10">
                 <div className="relative">
                     <div aria-hidden="true" className="absolute -right-3 -top-3 hidden h-full w-full border border-accent/60 sm:block" />
                     <ProjectImage

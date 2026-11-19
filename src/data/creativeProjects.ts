@@ -56,7 +56,8 @@ export const creativeProjects: readonly CreativeProject[] = [
             "Video recording and vocal recording for the JDL Come Alive music video.",
         responsibilities: ["Video recording", "Vocal recording"],
         skills: ["Video", "Vocal recording"],
-        media: [{ type: "video", title: "JDL Come Alive", src: "https://drive.google.com/file/d/1B7nttR-ENdp16eOKG2cU16TOF58lt3w_/view?usp=sharing" }],
+        coverImage: { src: "/images/creative/come-alive-cover.webp", alt: "Come Alive title over a city street", position: "48%" },
+        media: [{ type: "video", title: "JDL Come Alive", poster: "/images/creative/come-alive-cover.webp", src: "https://drive.google.com/file/d/1B7nttR-ENdp16eOKG2cU16TOF58lt3w_/view?usp=sharing" }],
     },
     {
         id: "mean-girls-jr",
@@ -210,5 +211,6 @@ export const creativeProjects: readonly CreativeProject[] = [
             "Souvenir programs created throughout JDL shows, beginning with the first JDL Goes Broadway.",
         responsibilities: ["Souvenir program design"],
         skills: ["Graphic design"],
+        coverImage: { src: "/images/creative/frozen-jr-flyer.webp", alt: "JDL show flyer", position: "top" },
     },
 ];
