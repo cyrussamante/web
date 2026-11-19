@@ -11,8 +11,9 @@ interface ProjectMediaGalleryProps {
     media?: readonly ProjectMediaItem[];
 }
 
-function getTileClass(index: number) {
-    // The first image leads the layout (its list item spans two columns).
+function getTileClass(image: GalleryImage, index: number) {
+    if (image.portrait) return "aspect-3/4";
+    // A leading landscape image spans the full row (see its list item).
     return index === 0 ? "aspect-video" : "aspect-4/3";
 }
 
@@ -24,18 +25,18 @@ function ProjectMediaGallery({ title, gallery = [], media = [] }: ProjectMediaGa
     return (
         <div className="space-y-10">
             {media.length > 0 && (
-                <div className="grid gap-8 lg:grid-cols-2">
+                <div className="space-y-8">
                     {media.map((item) => (
-                        <div key={`${item.type}-${item.src}`} className={media.length === 1 ? "lg:col-span-2" : ""}>
+                        <div key={`${item.type}-${item.src}`}>
                             {item.type === "video" ? <ProjectVideo item={item} /> : <ProjectPDF item={item} />}
                         </div>
                     ))}
                 </div>
             )}
             {gallery.length > 0 && (
-                <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <ul className="grid items-start gap-4 sm:grid-cols-2">
                     {gallery.map((image, index) => (
-                        <li key={`${image.src}-${index}`} className={index === 0 ? "sm:col-span-2" : ""}>
+                        <li key={`${image.src}-${index}`} className={index === 0 && !image.portrait ? "sm:col-span-2" : ""}>
                             <button
                                 type="button"
                                 onClick={() => setLightboxIndex(index)}
@@ -45,7 +46,9 @@ function ProjectMediaGallery({ title, gallery = [], media = [] }: ProjectMediaGa
                                 <ProjectImage
                                     src={image.src}
                                     alt={image.alt ?? `${title} photo ${index + 1}`}
-                                    aspectClass={getTileClass(index)}
+                                    aspectClass={getTileClass(image, index)}
+                                    fit={image.fit}
+                                    position={image.position}
                                     quiet
                                     className="transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none"
                                 />

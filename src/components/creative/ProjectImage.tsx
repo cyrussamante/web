@@ -9,6 +9,7 @@ interface ProjectImageProps {
     aspectClass?: string;
     className?: string;
     fit?: "cover" | "contain";
+    position?: string;
     eager?: boolean;
     /** Skips the "open original" link on failure (for images nested in interactive elements). */
     quiet?: boolean;
@@ -23,11 +24,12 @@ interface LoadedImageProps {
     openUrl: string;
     alt: string;
     fit: "cover" | "contain";
+    position?: string;
     eager: boolean;
     quiet: boolean;
 }
 
-function LoadedImage({ sources, openUrl, alt, fit, eager, quiet }: LoadedImageProps) {
+function LoadedImage({ sources, openUrl, alt, fit, position, eager, quiet }: LoadedImageProps) {
     const [sourceIndex, setSourceIndex] = useState(0);
 
     if (sourceIndex >= sources.length) {
@@ -47,6 +49,7 @@ function LoadedImage({ sources, openUrl, alt, fit, eager, quiet }: LoadedImagePr
             decoding="async"
             referrerPolicy="no-referrer"
             draggable={false}
+            style={position ? { objectPosition: position } : undefined}
             onError={() => setSourceIndex((index) => index + 1)}
             className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
         />
@@ -59,6 +62,7 @@ function ProjectImage({
     aspectClass = "aspect-video",
     className = "",
     fit = "cover",
+    position,
     eager = false,
     quiet = false,
     fallback,
@@ -76,6 +80,7 @@ function ProjectImage({
                     openUrl={resolved.openUrl}
                     alt={alt}
                     fit={fit}
+                    position={position}
                     eager={eager}
                     quiet={quiet}
                 />

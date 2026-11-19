@@ -30,6 +30,8 @@ function CreativeProjectRow({ project, number, animationDelay = 0 }: CreativePro
             {project.coverImage ? (
                 <ProjectImage
                     src={project.coverImage.src}
+                    fit={project.coverImage?.fit}
+                    position={project.coverImage?.position}
                     alt={project.coverImage.alt ?? `${project.title} cover image`}
                     aspectClass="aspect-video"
                     quiet

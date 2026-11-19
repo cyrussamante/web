@@ -21,6 +21,8 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
                     <div aria-hidden="true" className="absolute -right-3 -top-3 hidden h-full w-full border border-accent/60 sm:block" />
                     <ProjectImage
                         src={project.coverImage?.src}
+                        fit={project.coverImage?.fit}
+                        position={project.coverImage?.position}
                         alt={project.coverImage?.alt ?? `${project.title} cover image`}
                         aspectClass="aspect-4/3 sm:aspect-video"
                         eager

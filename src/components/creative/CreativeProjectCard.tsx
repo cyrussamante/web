@@ -21,6 +21,8 @@ function CreativeProjectCard({ project, aspectClass = "aspect-4/3", animationDel
         >
             <ProjectImage
                 src={project.coverImage?.src}
+                fit={project.coverImage?.fit}
+                position={project.coverImage?.position}
                 alt={project.coverImage?.alt ?? `${project.title} cover image`}
                 aspectClass={aspectClass}
                 quiet

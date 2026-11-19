@@ -13,6 +13,12 @@ export interface GalleryImage {
     readonly src: MediaSource;
     readonly alt?: string;
     readonly caption?: string;
+    /** How the image fills its frame; defaults to "cover". */
+    readonly fit?: "cover" | "contain";
+    /** CSS object-position for cropped images, e.g. "top" to keep a flyer's title in view. */
+    readonly position?: string;
+    /** Use a tall frame in galleries (flyers, posters, programs). */
+    readonly portrait?: boolean;
 }
 
 interface BaseMediaItem {
@@ -53,6 +59,8 @@ export interface CreativeProject {
     readonly additionalCategories?: readonly CreativeCategory[];
     /** Display date, e.g. "May 2024". */
     readonly date?: string;
+    /** Where the production took place, shown in the project modal. */
+    readonly venue?: string;
     readonly year?: number;
     readonly featured: boolean;
     readonly description: string;

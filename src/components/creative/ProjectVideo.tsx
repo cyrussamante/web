@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { VideoMediaItem } from "../../types/creative";
 import { resolveImage, resolveVideo } from "../../utils/media";
 import MediaPlaceholder from "./MediaPlaceholder";
@@ -10,6 +10,7 @@ interface ProjectVideoProps {
 
 function ProjectVideo({ item }: ProjectVideoProps) {
     const [isActive, setIsActive] = useState(false);
+    const frameRef = useRef<HTMLDivElement>(null);
     const video = resolveVideo(item.src);
 
     if (!video) {
@@ -26,7 +27,7 @@ function ProjectVideo({ item }: ProjectVideoProps) {
 
     return (
         <figure>
-            <div className="relative aspect-video w-full overflow-hidden border border-border bg-black theme-transition">
+            <div ref={frameRef} className="relative aspect-video w-full overflow-hidden border border-border bg-black theme-transition">
                 {!isActive ? (
                     <button
                         type="button"
@@ -72,14 +73,25 @@ function ProjectVideo({ item }: ProjectVideoProps) {
             </div>
             <figcaption className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-xs text-muted theme-transition">
                 <span>{item.caption ?? item.title}</span>
-                <a
-                    href={video.openUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-accent underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                >
-                    Open original {"\u2197\uFE0E"}
-                </a>
+                <span className="flex items-center gap-4">
+                    {isActive && document.fullscreenEnabled && (
+                        <button
+                            type="button"
+                            onClick={() => frameRef.current?.requestFullscreen()}
+                            className="cursor-pointer font-medium text-accent underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                        >
+                            Full screen
+                        </button>
+                    )}
+                    <a
+                        href={video.openUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium text-accent underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                    >
+                        Open original {"\u2197\uFE0E"}
+                    </a>
+                </span>
             </figcaption>
         </figure>
     );

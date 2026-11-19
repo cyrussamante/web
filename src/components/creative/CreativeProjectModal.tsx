@@ -91,6 +91,8 @@ function CreativeProjectModal({ project, projectSequence, onNavigate, onClose }:
                         <ProjectImage
                             key={project.id}
                             src={project.coverImage?.src}
+                            fit={project.coverImage?.fit}
+                            position={project.coverImage?.position}
                             alt={project.coverImage?.alt ?? `${project.title} cover image`}
                             aspectClass="aspect-16/10"
                             fallback={<CategoryCover project={project} />}
@@ -175,6 +177,12 @@ function CreativeProjectModal({ project, projectSequence, onNavigate, onClose }:
                             <section aria-labelledby="creative-date-heading">
                                 <h3 id="creative-date-heading" className={headingClass}>When</h3>
                                 <p className="mt-3 text-sm text-secondary theme-transition">{project.date}</p>
+                            </section>
+                        )}
+                        {project.venue && (
+                            <section aria-labelledby="creative-venue-heading">
+                                <h3 id="creative-venue-heading" className={headingClass}>Where</h3>
+                                <p className="mt-3 text-sm text-secondary theme-transition">{project.venue}</p>
                             </section>
                         )}
                         <section aria-labelledby="creative-categories-heading">

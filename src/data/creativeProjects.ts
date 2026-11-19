@@ -68,6 +68,9 @@ export const creativeProjects: readonly CreativeProject[] = [
             "Mentoring, sound cues, and projection cues for JDL Mean Girls JR.",
         responsibilities: ["Mentor", "Sound cues", "Projection cues"],
         skills: ["Sound cues", "Projection cues", "Mentoring"],
+        coverImage: { src: "/images/creative/mean-girls-jr-flyer.webp", alt: "Mean Girls JR flyer", position: "top" },
+        gallery: [{ src: "/images/creative/mean-girls-jr-flyer.webp", alt: "Mean Girls JR flyer", caption: "Show flyer", portrait: true }],
+        venue: "City Playhouse Theatre, Thornhill",
     },
     {
         id: "jdl-15th-anniversary-logo",
@@ -93,6 +96,9 @@ export const creativeProjects: readonly CreativeProject[] = [
             "Sound cues and lighting design and cues, calling the show, for JDL Seussical KIDS in Mississauga.",
         responsibilities: ["Sound cues", "Lighting design and cues (called the show)"],
         skills: ["Sound cues", "Lighting"],
+        coverImage: { src: "/images/creative/seussical-kids-flyer.webp", alt: "Seussical KIDS flyer", position: "20%" },
+        gallery: [{ src: "/images/creative/seussical-kids-flyer.webp", alt: "Seussical KIDS flyer", caption: "Show flyer", portrait: true }],
+        venue: "Maja Prentice Theatre, Mississauga",
     },
     {
         id: "decades-of-music",
@@ -106,6 +112,8 @@ export const creativeProjects: readonly CreativeProject[] = [
             "Projection and backdrop design, and calling the show with sound and lighting cues, for JDL Decades of Music.",
         responsibilities: ["Projection / backdrop design", "Called the show with sound and lighting cues"],
         skills: ["Projection & backdrops", "Sound cues", "Lighting"],
+        coverImage: { src: "https://drive.google.com/file/d/18vS-TOnn8DJNL2FbtBQzNcgRzREonx-v/view?usp=sharing", alt: "The Decades title card" },
+        media: [{ type: "video", title: "Decades Loop", src: "https://drive.google.com/file/d/18vS-TOnn8DJNL2FbtBQzNcgRzREonx-v/view?usp=sharing" }],
     },
     {
         id: "frozen-jr",
@@ -118,6 +126,9 @@ export const creativeProjects: readonly CreativeProject[] = [
             "Sound cues and projection cues for JDL Frozen JR.",
         responsibilities: ["Sound cues", "Projection cues"],
         skills: ["Sound cues", "Projection cues"],
+        coverImage: { src: "/images/creative/frozen-jr-flyer.webp", alt: "Frozen JR flyer", position: "top" },
+        gallery: [{ src: "/images/creative/frozen-jr-flyer.webp", alt: "Frozen JR flyer", caption: "Show flyer", portrait: true }],
+        venue: "City Playhouse Theatre, Thornhill",
     },
     {
         id: "love-notes-recital",
@@ -148,6 +159,8 @@ export const creativeProjects: readonly CreativeProject[] = [
             "Projection and backdrop design, and calling the show with sound and lighting cues, for Mark Ezekiel Rivera's Love of Music Concert.",
         responsibilities: ["Projection / backdrop design", "Called the show with sound and lighting cues"],
         skills: ["Projection & backdrops", "Sound cues", "Lighting"],
+        coverImage: { src: "https://drive.google.com/file/d/1n_GXG9uA54u21HXFsGVveOOUIqL-ihzo/view?usp=sharing", alt: "Love of Music logo animation" },
+        media: [{ type: "video", title: "Love of Music Logo", src: "https://drive.google.com/file/d/1n_GXG9uA54u21HXFsGVveOOUIqL-ihzo/view?usp=sharing" }],
     },
     {
         id: "jdl-triple-act-concert",
@@ -177,6 +190,9 @@ export const creativeProjects: readonly CreativeProject[] = [
             "Sound cues and projection cues for JDL Moana JR.",
         responsibilities: ["Sound cues", "Projection cues"],
         skills: ["Sound cues", "Projection cues"],
+        coverImage: { src: "/images/creative/moana-jr-flyer.webp", alt: "Moana JR flyer", position: "top" },
+        gallery: [{ src: "/images/creative/moana-jr-flyer.webp", alt: "Moana JR flyer", caption: "Show flyer", portrait: true }],
+        venue: "City Playhouse Theatre, Thornhill",
     },
     {
         id: "jdl-souvenir-playbills",
