@@ -65,7 +65,7 @@ export const creativeProjects: readonly CreativeProject[] = [
         responsibilities: ["Video recording", "Vocal recording"],
         skills: ["Video", "Vocal recording"],
         coverImage: { src: "/images/creative/come-alive-cover.webp", alt: "Come Alive title over a city street", position: "48%" },
-        media: [{ type: "video", title: "JDL Come Alive", portrait: true, poster: "/images/creative/come-alive-cover.webp", src: "https://drive.google.com/file/d/1B7nttR-ENdp16eOKG2cU16TOF58lt3w_/view?usp=sharing" }],
+        media: [{ type: "video", title: "JDL Come Alive", poster: "/images/creative/come-alive-cover.webp", src: "https://drive.google.com/file/d/1B7nttR-ENdp16eOKG2cU16TOF58lt3w_/view?usp=sharing" }],
     },
     {
         id: "mean-girls-jr",
