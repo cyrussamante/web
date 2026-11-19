@@ -117,6 +117,8 @@ All creative projects live in [`src/data/creativeProjects.ts`](./src/data/creati
 
 Other supported sources: YouTube and Vimeo URLs, local files under `public/` (e.g. `/images/creative/poster.webp`, `/videos/clip.mp4`, `/docs/playbill.pdf`), and any public `https` image, video (`.mp4`, `.webm`, `.mov`), or PDF URL. Unsupported or broken links show a placeholder instead of breaking the page. Videos never autoplay and load only when played; PDFs load when scrolled into view.
 
+Media is optional. Projects without a cover image show a category icon and date on cards, and the modal drops the empty image and media areas, so use `description` and `overview` to tell the story until you have photos or video.
+
 ### Example: add a project
 
 ```ts
@@ -129,6 +131,7 @@ Other supported sources: YouTube and Vimeo URLs, local files under `public/` (e.
     date: "March 2025", // optional display label; the year/month drive sorting and the Year filter
     featured: false, // only one project should be featured
     description: "One or two factual sentences about the project.",
+    overview: ["Optional longer write-up.", "One string per paragraph."], // optional; shown in the modal
     responsibilities: ["Sound cues", "Projection cues"],
     skills: ["Sound cues", "Projection cues"], // short labels; become the skill filter chips
 

@@ -3,6 +3,7 @@ import type { CreativeProject } from "../../types/creative";
 import ActionLink from "../ActionLink";
 import SectionLabel from "../SectionLabel";
 import ProjectBadge from "../projects/ProjectBadge";
+import CategoryCover from "./CategoryCover";
 import ProjectImage from "./ProjectImage";
 
 interface FeaturedProjectProps {
@@ -23,6 +24,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
                         alt={project.coverImage?.alt ?? `${project.title} cover image`}
                         aspectClass="aspect-4/3 sm:aspect-video"
                         eager
+                        fallback={<CategoryCover project={project} />}
                         className="relative border border-border"
                     />
                 </div>

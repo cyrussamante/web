@@ -56,6 +56,8 @@ export interface CreativeProject {
     readonly year?: number;
     readonly featured: boolean;
     readonly description: string;
+    /** Optional longer write-up, one string per paragraph. Shown under "Overview" in the project modal. */
+    readonly overview?: readonly string[];
     readonly responsibilities: readonly string[];
     /** Short skill labels (e.g. "Sound cues") used for the skill filter chips and search. */
     readonly skills: readonly string[];

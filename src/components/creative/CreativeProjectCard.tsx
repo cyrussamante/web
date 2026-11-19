@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router";
 import type { CreativeProject } from "../../types/creative";
 import ProjectBadges from "../projects/ProjectBadges";
+import CategoryCover from "./CategoryCover";
 import ProjectImage from "./ProjectImage";
 
 interface CreativeProjectCardProps {
@@ -23,6 +24,7 @@ function CreativeProjectCard({ project, aspectClass = "aspect-4/3", animationDel
                 alt={project.coverImage?.alt ?? `${project.title} cover image`}
                 aspectClass={aspectClass}
                 quiet
+                fallback={<CategoryCover project={project} />}
                 className="border-b border-border"
             />
             <span className="flex flex-1 flex-col p-4">

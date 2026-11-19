@@ -1,7 +1,6 @@
 import { useState } from "react";
 import type { GalleryImage, ProjectMediaItem } from "../../types/creative";
 import ImageLightbox from "./ImageLightbox";
-import MediaPlaceholder from "./MediaPlaceholder";
 import ProjectImage from "./ProjectImage";
 import ProjectPDF from "./ProjectPDF";
 import ProjectVideo from "./ProjectVideo";
@@ -20,16 +19,7 @@ function getTileClass(index: number) {
 function ProjectMediaGallery({ title, gallery = [], media = [] }: ProjectMediaGalleryProps) {
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-    if (gallery.length === 0 && media.length === 0) {
-        return (
-            <div className="h-48">
-                <MediaPlaceholder
-                    label="Photos, video, and documents coming soon"
-                    devHint="Add images to `gallery` and videos or PDFs to `media` in src/data/creativeProjects.ts."
-                />
-            </div>
-        );
-    }
+    if (gallery.length === 0 && media.length === 0) return null;
 
     return (
         <div className="space-y-10">

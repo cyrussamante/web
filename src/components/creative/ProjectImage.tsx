@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { resolveImage } from "../../utils/media";
 import MediaPlaceholder from "./MediaPlaceholder";
 
@@ -12,6 +12,8 @@ interface ProjectImageProps {
     eager?: boolean;
     /** Skips the "open original" link on failure (for images nested in interactive elements). */
     quiet?: boolean;
+    /** Rendered instead of the generic placeholder when no source is provided. */
+    fallback?: ReactNode;
     placeholderLabel?: string;
     placeholderHint?: string;
 }
@@ -59,6 +61,7 @@ function ProjectImage({
     fit = "cover",
     eager = false,
     quiet = false,
+    fallback,
     placeholderLabel = "Media coming soon",
     placeholderHint = "Add a Google Drive or local image link in src/data/creativeProjects.ts.",
 }: ProjectImageProps) {
@@ -76,6 +79,8 @@ function ProjectImage({
                     eager={eager}
                     quiet={quiet}
                 />
+            ) : !src && fallback ? (
+                fallback
             ) : (
                 <MediaPlaceholder
                     label={src ? "This image link is not supported" : placeholderLabel}
