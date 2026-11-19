@@ -122,7 +122,7 @@ Other supported sources: YouTube and Vimeo URLs, local files under `public/` (e.
     title: "My New Show",
     category: "live-production", // live-production | visual-design | graphic-design | video-multimedia
     additionalCategories: ["visual-design"], // optional: also list it under these
-    year: 2025, // optional
+    date: "March 2025", // optional display date
     featured: false, // only one project should be featured
     description: "One or two factual sentences about the project.",
     responsibilities: ["Sound", "Projections"],

@@ -86,9 +86,8 @@ function CreativeHome() {
                     Live shows, <span className="text-accent theme-transition">visuals</span> &amp; video
                 </h1>
                 <p className="mt-5 text-sm leading-6 text-secondary theme-transition sm:text-base sm:leading-7">
-                    My work in live entertainment, theatre, concerts, visual production, and multimedia, from sound
-                    and projection operation to lighting design, branding, and video.
-                </p>
+                    My work in live entertainment, theatre, concerts, visual production, and multimedia, from calling
+                    shows with sound and lighting cues to projection and backdrop design, graphic design, and video.</p>
                 <nav aria-label="Creative categories" className="mt-6">
                     <ul className="flex flex-wrap gap-2">
                         {sections.map(({ category }) => (

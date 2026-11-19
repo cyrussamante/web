@@ -83,9 +83,9 @@ function CreativeProjectModal({ project, projectSequence, onNavigate, onClose }:
                         className="rounded-lg border border-border"
                     />
                     <div className="min-w-0">
-                        <div className="flex flex-wrap items-center gap-2.5">
+                        <div className="flex flex-wrap items-center gap-2.5 pr-12">
                             <ProjectBadge variant="category">{creativeCategoryDetails[project.category].label}</ProjectBadge>
-                            {project.year && <ProjectBadge variant="date">{project.year}</ProjectBadge>}
+                            {(project.date ?? project.year) && <ProjectBadge variant="date">{project.date ?? project.year}</ProjectBadge>}
                             {project.featured && <ProjectBadge variant="featured">Featured</ProjectBadge>}
                         </div>
                         <h2

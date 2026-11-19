@@ -31,17 +31,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://cyrussamante.com/creative/jdl-triple-act-concert</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cyrussamante.com/creative/love-of-music-concert</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cyrussamante.com/creative/love-notes-recital</loc>
+    <loc>https://cyrussamante.com/creative/jdl-come-alive-music-video</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -51,12 +41,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://cyrussamante.com/creative/frozen-jr</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cyrussamante.com/creative/moana-jr</loc>
+    <loc>https://cyrussamante.com/creative/jdl-15th-anniversary-logo</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -66,27 +51,37 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://cyrussamante.com/creative/jdl-goes-broadway-central-scarborough</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://cyrussamante.com/creative/decades-of-music</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://cyrussamante.com/creative/jdl-come-alive-music-video</loc>
+    <loc>https://cyrussamante.com/creative/frozen-jr</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cyrussamante.com/creative/love-notes-recital</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cyrussamante.com/creative/love-of-music-concert</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cyrussamante.com/creative/jdl-triple-act-concert</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cyrussamante.com/creative/moana-jr</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cyrussamante.com/creative/jdl-souvenir-playbills</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cyrussamante.com/creative/jdl-15th-anniversary-logo</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

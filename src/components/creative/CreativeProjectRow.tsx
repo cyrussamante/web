@@ -19,6 +19,7 @@ function CreativeProjectRow({ project, number, animationDelay = 0 }: CreativePro
             <span className="text-xl font-medium tabular-nums text-accent theme-transition md:text-2xl">{number}</span>
             <span className="min-w-0">
                 <h3 className="text-base font-semibold text-foreground theme-transition">{project.title}</h3>
+                {project.date && <span className="mt-0.5 block text-xs text-muted theme-transition">{project.date}</span>}
                 <span className="mt-1 block text-sm leading-5 text-secondary theme-transition">
                     {project.description}
                 </span>

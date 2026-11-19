@@ -33,6 +33,7 @@ function CreativeProjectCard({ project, aspectClass = "aspect-4/3", animationDel
                         {"\u2192\uFE0E"}
                     </span>
                 </span>
+                {project.date && <span className="mt-1 text-xs text-muted theme-transition">{project.date}</span>}
                 <span className="mt-2 line-clamp-3 text-sm leading-5 text-secondary theme-transition">
                     {project.description}
                 </span>

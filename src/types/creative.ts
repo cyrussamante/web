@@ -51,6 +51,8 @@ export interface CreativeProject {
     readonly category: CreativeCategory;
     /** Extra categories the project should also appear under. */
     readonly additionalCategories?: readonly CreativeCategory[];
+    /** Display date, e.g. "May 2024". */
+    readonly date?: string;
     readonly year?: number;
     readonly featured: boolean;
     readonly description: string;
