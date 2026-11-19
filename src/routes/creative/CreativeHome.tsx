@@ -114,8 +114,8 @@ function CreativeHome() {
                     Live shows, <span className="text-accent theme-transition">visuals</span> &amp; video
                 </h1>
                 <p className="mt-5 text-sm leading-6 text-secondary theme-transition sm:text-base sm:leading-7">
-                    My work in live entertainment, theatre, concerts, visual production, and multimedia, from calling
-                    shows with sound and lighting cues to projection and backdrop design, graphic design, and video.
+                    My work in live entertainment, theatre, concerts, visual production, and multimedia, from sound
+                    and lighting cues to projection and backdrop design, graphic design, and video.
                 </p>
                 <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-3">
                     {stats.map(({ label, value }) => (

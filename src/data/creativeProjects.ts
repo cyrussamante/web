@@ -9,7 +9,7 @@ import type { CreativeCategory, CreativeProject } from "../types/creative";
 export const creativeCategoryDetails: Record<CreativeCategory, { label: string; description: string }> = {
     "live-production": {
         label: "Live Production & Technical Design",
-        description: "Sound and lighting cues, projection cues, lighting design, and calling shows for concerts, recitals, and theatre.",
+        description: "Sound and lighting cues, projection cues, lighting design, and show cueing for concerts, recitals, and theatre.",
     },
     "visual-design": {
         label: "Visual Design & Projection",
@@ -84,6 +84,8 @@ export const creativeProjects: readonly CreativeProject[] = [
         responsibilities: ["Logo design", "Anniversary branding"],
         skills: ["Graphic design"],
         relatedSlugs: ["jdl-15th-anniversary-gala"],
+        coverImage: { src: "/images/creative/jdl-15th-anniversary-logo.webp", alt: "JDL 15th Anniversary logo in purple and white" },
+        gallery: [{ src: "/images/creative/jdl-15th-anniversary-logo.webp", alt: "JDL 15th Anniversary logo in purple and white", caption: "Logo in colour and reversed versions" }],
     },
     {
         id: "seussical-kids",
@@ -93,8 +95,8 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "January 2026",
         featured: false,
         description:
-            "Sound cues and lighting design and cues, calling the show, for JDL Seussical KIDS in Mississauga.",
-        responsibilities: ["Sound cues", "Lighting design and cues (called the show)"],
+            "Sound cues and lighting design and cues for JDL Seussical KIDS in Mississauga.",
+        responsibilities: ["Sound cues", "Lighting design and cues"],
         skills: ["Sound cues", "Lighting"],
         coverImage: { src: "/images/creative/seussical-kids-flyer.webp", alt: "Seussical KIDS flyer", position: "20%" },
         gallery: [{ src: "/images/creative/seussical-kids-flyer.webp", alt: "Seussical KIDS flyer", caption: "Show flyer", portrait: true }],
@@ -109,8 +111,8 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "July 2025",
         featured: false,
         description:
-            "Projection and backdrop design, and calling the show with sound and lighting cues, for JDL Decades of Music.",
-        responsibilities: ["Projection / backdrop design", "Called the show with sound and lighting cues"],
+            "Projection and backdrop design, and sound and lighting cues for JDL Decades of Music.",
+        responsibilities: ["Projection / backdrop design", "Sound and lighting cues"],
         skills: ["Projection & backdrops", "Sound cues", "Lighting"],
         coverImage: { src: "https://drive.google.com/file/d/18vS-TOnn8DJNL2FbtBQzNcgRzREonx-v/view?usp=sharing", alt: "The Decades title card" },
         media: [{ type: "video", title: "Decades Loop", src: "https://drive.google.com/file/d/18vS-TOnn8DJNL2FbtBQzNcgRzREonx-v/view?usp=sharing" }],
@@ -139,8 +141,8 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "February 2025",
         featured: false,
         description:
-            "Projection and backdrop design, and calling the show with sound and lighting cues, for JDL Love Notes – A Night of Music Vocal Recital.",
-        responsibilities: ["Projection / backdrop design", "Called the show with sound and lighting cues"],
+            "Projection and backdrop design, and sound and lighting cues for JDL Love Notes – A Night of Music Vocal Recital.",
+        responsibilities: ["Projection / backdrop design", "Sound and lighting cues"],
         skills: ["Projection & backdrops", "Sound cues", "Lighting"],
         coverImage: { src: "https://drive.google.com/file/d/1u_e2vmUIYx7GUqQ75_Fp80Pa6I6xBUn-/view?usp=sharing", alt: "Love Notes title animation" },
         media: [
@@ -156,8 +158,8 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "December 2024",
         featured: false,
         description:
-            "Projection and backdrop design, and calling the show with sound and lighting cues, for Mark Ezekiel Rivera's Love of Music Concert.",
-        responsibilities: ["Projection / backdrop design", "Called the show with sound and lighting cues"],
+            "Projection and backdrop design, and sound and lighting cues for Mark Ezekiel Rivera's Love of Music Concert.",
+        responsibilities: ["Projection / backdrop design", "Sound and lighting cues"],
         skills: ["Projection & backdrops", "Sound cues", "Lighting"],
         coverImage: { src: "https://drive.google.com/file/d/1n_GXG9uA54u21HXFsGVveOOUIqL-ihzo/view?usp=sharing", alt: "Love of Music logo animation" },
         media: [{ type: "video", title: "Love of Music Logo", src: "https://drive.google.com/file/d/1n_GXG9uA54u21HXFsGVveOOUIqL-ihzo/view?usp=sharing" }],
@@ -171,13 +173,16 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "May 2024",
         featured: false,
         description:
-            "Video editing and content, projection and backdrop design, and calling the show with sound and lighting cues for the JDL Triple Act – The Next Level Concert.",
-        responsibilities: ["Video editing and content", "Projection / backdrop design", "Called the show with sound and lighting cues"],
+            "Video editing and content, projection and backdrop design, and sound and lighting cues for the JDL Triple Act – The Next Level Concert.",
+        responsibilities: ["Video editing and content", "Projection / backdrop design", "Sound and lighting cues"],
         skills: ["Video", "Projection & backdrops", "Sound cues", "Lighting"],
         media: [
             { type: "video", title: "Greetings (Updated)", src: "https://drive.google.com/file/d/19eLnBcmPOMkFt1W4NmmoZganUhR31DOj/view?usp=sharing" },
             { type: "video", title: "MAPA (Updated)", src: "https://drive.google.com/file/d/16bSxO31G43_O5Qza6oYJbd5UQt4-VYJf/view?usp=sharing" },
         ],
+        coverImage: { src: "/images/creative/jdl-triple-act-flyer.webp", alt: "JDL Triple Act – The Next Level Concert flyer", position: "top" },
+        gallery: [{ src: "/images/creative/jdl-triple-act-flyer.webp", alt: "JDL Triple Act – The Next Level Concert flyer", caption: "Concert flyer", fit: "contain" }],
+        venue: "2700 Bristol Circle, Oakville, ON",
     },
     {
         id: "moana-jr",
