@@ -208,9 +208,18 @@ export const creativeProjects: readonly CreativeProject[] = [
         category: "graphic-design",
         featured: false,
         description:
-            "Souvenir programs created throughout JDL shows, beginning with the first JDL Goes Broadway.",
-        responsibilities: ["Souvenir program design"],
-        skills: ["Graphic design"],
+            "Designed commemorative souvenir programs for JDL productions, beginning with the first JDL Goes Broadway.",
+        overview: [
+            "Each program was designed as a keepsake for the production, presenting the full cast of students alongside the show's creative story.",
+            "Programs recognized the production's sponsors and partners and featured curated photographs related to the show, giving audiences a polished, lasting record of the performance.",
+        ],
+        responsibilities: [
+            "Souvenir program design for JDL productions",
+            "Features recognizing every student in the production",
+            "Sponsor and partner recognition",
+            "Curated production photography",
+        ],
+        skills: ["Graphic design", "Print design"],
         coverImage: { src: "/images/creative/frozen-jr-flyer.webp", alt: "JDL show flyer", position: "top" },
     },
 ];
