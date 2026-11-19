@@ -35,7 +35,11 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "November 2026",
         featured: true,
         description:
-            "Poster design, magazine design, and projection and backdrop design for the JDL 15th Anniversary Gala.",
+            "Poster, magazine, and projection design for the JDL 15th Anniversary Gala, creating a cohesive visual presence across print and stage.",
+        overview: [
+            "Designed the printed and on-screen materials for the JDL 15th Anniversary Gala, including the event poster and gala magazine.",
+            "Created the projection and backdrop visuals presented during the event, extending the anniversary identity from print to the stage.",
+        ],
         responsibilities: ["Poster design", "Magazine design", "Projection / backdrop design"],
         skills: ["Graphic design", "Projection & backdrops"],
         relatedSlugs: ["jdl-15th-anniversary-logo"],
@@ -53,7 +57,11 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "September 2026",
         featured: false,
         description:
-            "Video recording and vocal recording for the JDL Come Alive music video.",
+            "Video recording and vocal recording for the JDL Come Alive music video, supporting the project from capture through to the finished 4K release.",
+        overview: [
+            "Filmed the video footage and recorded the vocal tracks for the JDL Come Alive music video.",
+            "Contributed to both the audio and visual capture of the project, which was completed and delivered as a finished 4K video.",
+        ],
         responsibilities: ["Video recording", "Vocal recording"],
         skills: ["Video", "Vocal recording"],
         coverImage: { src: "/images/creative/come-alive-cover.webp", alt: "Come Alive title over a city street", position: "48%" },
@@ -67,7 +75,11 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "March / May 2026",
         featured: false,
         description:
-            "Mentoring, sound cues, and projection cues for JDL Mean Girls JR.",
+            "Mentorship and live show operation for JDL's Mean Girls JR, including sound cues and projection cues.",
+        overview: [
+            "Served as a mentor on JDL's production of Mean Girls JR while operating its sound and projection cues during performance.",
+            "Presented at City Playhouse Theatre in Thornhill.",
+        ],
         responsibilities: ["Mentor", "Sound cues", "Projection cues"],
         skills: ["Sound cues", "Projection cues", "Mentoring"],
         coverImage: { src: "/images/creative/mean-girls-jr-flyer.webp", alt: "Mean Girls JR flyer", position: "top" },
@@ -82,7 +94,11 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "February 2026",
         featured: false,
         description:
-            "Logo design and anniversary branding for JDL's 15th anniversary.",
+            "Logo design and anniversary branding for JDL Performing Arts' 15th anniversary, delivered as a crest-style mark with full-colour and reversed versions.",
+        overview: [
+            "Designed the commemorative logo for JDL Performing Arts' 15th anniversary: a crest that brings together dancers, a microphone, a crown, and theatre masks beneath a \"15th Anniversary\" banner.",
+            "The mark was produced in full-colour and reversed versions, with and without the JDL Performing Arts wordmark.",
+        ],
         responsibilities: ["Logo design", "Anniversary branding"],
         skills: ["Graphic design"],
         relatedSlugs: ["jdl-15th-anniversary-gala"],
@@ -97,7 +113,11 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "January 2026",
         featured: false,
         description:
-            "Sound cues and lighting design and cues for JDL Seussical KIDS in Mississauga.",
+            "Lighting design and sound cueing for JDL's Seussical KIDS, presented at the Maja Prentice Theatre in Mississauga.",
+        overview: [
+            "Designed the lighting for JDL's production of Seussical KIDS and operated its lighting and sound cues during performance.",
+            "Presented in Mississauga at the Maja Prentice Theatre, with matinee and evening performances.",
+        ],
         responsibilities: ["Sound cues", "Lighting design and cues"],
         skills: ["Sound cues", "Lighting"],
         coverImage: { src: "/images/creative/seussical-kids-flyer.webp", alt: "Seussical KIDS flyer", position: "20%" },
@@ -113,7 +133,11 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "July 2025",
         featured: false,
         description:
-            "Projection and backdrop design, and sound and lighting cues for JDL Decades of Music.",
+            "Projection and backdrop design with sound and lighting cueing for JDL's Decades of Music production.",
+        overview: [
+            "Designed the projected visuals and backdrops for JDL's Decades of Music production.",
+            "Also operated the production's sound and lighting cues during performance.",
+        ],
         responsibilities: ["Projection / backdrop design", "Sound and lighting cues"],
         skills: ["Projection & backdrops", "Sound cues", "Lighting"],
         coverImage: { src: "https://drive.google.com/file/d/18vS-TOnn8DJNL2FbtBQzNcgRzREonx-v/view?usp=sharing", alt: "The Decades title card" },
@@ -127,7 +151,11 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "March 2025",
         featured: false,
         description:
-            "Sound cues and projection cues for JDL Frozen JR.",
+            "Sound and projection cueing for JDL's Frozen JR, presented at the City Playhouse Theatre in Thornhill.",
+        overview: [
+            "Operated sound and projection cues during JDL's production of Frozen JR, supporting the live performance with precise audio and visual timing.",
+            "Presented at City Playhouse Theatre in Thornhill.",
+        ],
         responsibilities: ["Sound cues", "Projection cues"],
         skills: ["Sound cues", "Projection cues"],
         coverImage: { src: "/images/creative/frozen-jr-flyer.webp", alt: "Frozen JR flyer", position: "top" },
@@ -143,7 +171,11 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "February 2025",
         featured: false,
         description:
-            "Projection and backdrop design, and sound and lighting cues for JDL Love Notes – A Night of Music Vocal Recital.",
+            "Projection and backdrop design with sound and lighting cueing for JDL Love Notes – A Night of Music Vocal Recital.",
+        overview: [
+            "Developed the projected visuals and backdrops for JDL Love Notes – A Night of Music, a vocal recital.",
+            "Also operated the recital's sound and lighting cues during performance.",
+        ],
         responsibilities: ["Projection / backdrop design", "Sound and lighting cues"],
         skills: ["Projection & backdrops", "Sound cues", "Lighting"],
         coverImage: { src: "https://drive.google.com/file/d/1u_e2vmUIYx7GUqQ75_Fp80Pa6I6xBUn-/view?usp=sharing", alt: "Love Notes title animation" },
@@ -160,7 +192,11 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "December 2024",
         featured: false,
         description:
-            "Projection and backdrop design, and sound and lighting cues for Mark Ezekiel Rivera's Love of Music Concert.",
+            "Projection and backdrop design with sound and lighting cueing for Mark Ezekiel Rivera's Love of Music Concert.",
+        overview: [
+            "Designed the projected visuals and backdrops for Mark Ezekiel Rivera's Love of Music Concert.",
+            "Also operated the concert's sound and lighting cues during performance.",
+        ],
         responsibilities: ["Projection / backdrop design", "Sound and lighting cues"],
         skills: ["Projection & backdrops", "Sound cues", "Lighting"],
         coverImage: { src: "https://drive.google.com/file/d/1n_GXG9uA54u21HXFsGVveOOUIqL-ihzo/view?usp=sharing", alt: "Love of Music logo animation" },
@@ -175,7 +211,11 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "May 2024",
         featured: false,
         description:
-            "Video editing and content, projection and backdrop design, and sound and lighting cues for the JDL Triple Act – The Next Level Concert.",
+            "Video editing and content, projection and backdrop design, and sound and lighting cueing for the JDL Triple Act – The Next Level Concert in Oakville.",
+        overview: [
+            "Edited and produced video content for the JDL Triple Act – The Next Level Concert, presented on May 11, 2024 in Oakville.",
+            "Designed the concert's projection and backdrop visuals and operated its sound and lighting cues during performance.",
+        ],
         responsibilities: ["Video editing and content", "Projection / backdrop design", "Sound and lighting cues"],
         skills: ["Video", "Projection & backdrops", "Sound cues", "Lighting"],
         media: [
@@ -194,7 +234,11 @@ export const creativeProjects: readonly CreativeProject[] = [
         date: "March 2024",
         featured: false,
         description:
-            "Sound cues and projection cues for JDL Moana JR.",
+            "Sound and projection cueing for JDL's Moana JR, presented at the City Playhouse Theatre in Thornhill.",
+        overview: [
+            "Operated sound and projection cues during JDL's production of Moana JR, supporting the live performance with precise audio and visual timing.",
+            "Presented at City Playhouse Theatre in Thornhill.",
+        ],
         responsibilities: ["Sound cues", "Projection cues"],
         skills: ["Sound cues", "Projection cues"],
         coverImage: { src: "/images/creative/moana-jr-flyer.webp", alt: "Moana JR flyer", position: "top" },
