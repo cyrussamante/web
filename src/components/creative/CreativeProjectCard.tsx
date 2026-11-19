@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import type { CreativeProject } from "../../types/creative";
 import ProjectBadges from "../projects/ProjectBadges";
 import ProjectImage from "./ProjectImage";
@@ -10,9 +10,11 @@ interface CreativeProjectCardProps {
 }
 
 function CreativeProjectCard({ project, aspectClass = "aspect-4/3", animationDelay = 0 }: CreativeProjectCardProps) {
+    const { search } = useLocation();
+
     return (
         <Link
-            to={`/creative/${project.slug}`}
+            to={{ pathname: `/creative/${project.slug}`, search }}
             style={{ animationDelay: `${animationDelay}ms` }}
             className="motion-fade-up project-card-motion group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-sm hover:-translate-y-1 hover:border-accent/60 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent dark:shadow-none dark:hover:shadow-none motion-reduce:transform-none"
         >

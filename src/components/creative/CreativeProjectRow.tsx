@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import type { CreativeProject } from "../../types/creative";
 import ProjectBadges from "../projects/ProjectBadges";
 import ProjectImage from "./ProjectImage";
@@ -10,9 +10,11 @@ interface CreativeProjectRowProps {
 }
 
 function CreativeProjectRow({ project, number, animationDelay = 0 }: CreativeProjectRowProps) {
+    const { search } = useLocation();
+
     return (
         <Link
-            to={`/creative/${project.slug}`}
+            to={{ pathname: `/creative/${project.slug}`, search }}
             style={{ animationDelay: `${animationDelay}ms` }}
             className="motion-fade-up group grid gap-4 border-b border-border py-5 theme-transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:grid-cols-[2.5rem_minmax(0,1fr)_minmax(10rem,14rem)_1.5rem] md:items-center md:gap-5"
         >

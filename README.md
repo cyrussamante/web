@@ -105,6 +105,10 @@ The previous `/projects` and `/experience` URLs redirect to their `/software/...
 
 All creative projects live in [`src/data/creativeProjects.ts`](./src/data/creativeProjects.ts). Adding or updating a project only requires editing that file; projects appear in the order listed. When you add a project, also add its `/creative/<slug>` URL to `public/sitemap.xml`.
 
+### Searching and filtering
+
+`/creative` has search (press `/` to focus it), category tabs, skill chips (a project must match every selected chip), a year filter, sort (newest, oldest, A–Z), and By category / Grid / List layouts. The state is stored in the URL (e.g. `/creative?q=lighting&view=list`), so filtered views can be shared. Skill chips and years are generated from each project's `skills` and `date`, so there is nothing else to configure; keep skill labels spelled consistently.
+
 ### Google Drive media
 
 1. In Google Drive, right-click the file → **Share** → set General access to **Anyone with the link** (Viewer). Files that are not public will not display for visitors.
@@ -122,10 +126,11 @@ Other supported sources: YouTube and Vimeo URLs, local files under `public/` (e.
     title: "My New Show",
     category: "live-production", // live-production | visual-design | graphic-design | video-multimedia
     additionalCategories: ["visual-design"], // optional: also list it under these
-    date: "March 2025", // optional display date
+    date: "March 2025", // optional display label; the year/month drive sorting and the Year filter
     featured: false, // only one project should be featured
     description: "One or two factual sentences about the project.",
-    responsibilities: ["Sound", "Projections"],
+    responsibilities: ["Sound cues", "Projection cues"],
+    skills: ["Sound cues", "Projection cues"], // short labels; become the skill filter chips
 
     // Cover image from Google Drive
     coverImage: {

@@ -1,3 +1,4 @@
+import { useLocation } from "react-router";
 import type { CreativeProject } from "../../types/creative";
 import ActionLink from "../ActionLink";
 import SectionLabel from "../SectionLabel";
@@ -9,6 +10,8 @@ interface FeaturedProjectProps {
 }
 
 function FeaturedProject({ project }: FeaturedProjectProps) {
+    const { search } = useLocation();
+
     return (
         <section aria-labelledby="featured-heading" className="motion-fade-up py-10 sm:py-12" style={{ animationDelay: "100ms" }}>
             <SectionLabel>FEATURED PROJECT</SectionLabel>
@@ -38,7 +41,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
                         ))}
                     </ul>
                     <div className="mt-6">
-                        <ActionLink href={`/creative/${project.slug}`} showArrow>
+                        <ActionLink href={`/creative/${project.slug}${search}`} showArrow>
                             View project
                         </ActionLink>
                     </div>

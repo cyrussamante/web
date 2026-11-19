@@ -57,6 +57,8 @@ export interface CreativeProject {
     readonly featured: boolean;
     readonly description: string;
     readonly responsibilities: readonly string[];
+    /** Short skill labels (e.g. "Sound cues") used for the skill filter chips and search. */
+    readonly skills: readonly string[];
     /** Shown on cards and as the detail header image. Placeholder is shown when omitted. */
     readonly coverImage?: GalleryImage;
     readonly gallery?: readonly GalleryImage[];

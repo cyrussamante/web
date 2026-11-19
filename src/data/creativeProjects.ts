@@ -37,6 +37,7 @@ export const creativeProjects: readonly CreativeProject[] = [
         description:
             "Poster design, magazine design, and projection and backdrop design for the JDL 15th Anniversary Gala.",
         responsibilities: ["Poster design", "Magazine design", "Projection / backdrop design"],
+        skills: ["Graphic design", "Projection & backdrops"],
         relatedSlugs: ["jdl-15th-anniversary-logo"],
     },
     {
@@ -49,6 +50,7 @@ export const creativeProjects: readonly CreativeProject[] = [
         description:
             "Video recording and vocal recording for the JDL Come Alive music video.",
         responsibilities: ["Video recording", "Vocal recording"],
+        skills: ["Video", "Vocal recording"],
     },
     {
         id: "mean-girls-jr",
@@ -60,6 +62,7 @@ export const creativeProjects: readonly CreativeProject[] = [
         description:
             "Mentoring, sound cues, and projection cues for JDL Mean Girls JR.",
         responsibilities: ["Mentor", "Sound cues", "Projection cues"],
+        skills: ["Sound cues", "Projection cues", "Mentoring"],
     },
     {
         id: "jdl-15th-anniversary-logo",
@@ -71,6 +74,7 @@ export const creativeProjects: readonly CreativeProject[] = [
         description:
             "Logo design and anniversary branding for JDL's 15th anniversary.",
         responsibilities: ["Logo design", "Anniversary branding"],
+        skills: ["Graphic design"],
         relatedSlugs: ["jdl-15th-anniversary-gala"],
     },
     {
@@ -83,6 +87,7 @@ export const creativeProjects: readonly CreativeProject[] = [
         description:
             "Sound cues and lighting design and cues, calling the show, for JDL Seussical KIDS in Mississauga.",
         responsibilities: ["Sound cues", "Lighting design and cues (called the show)"],
+        skills: ["Sound cues", "Lighting"],
     },
     {
         id: "decades-of-music",
@@ -95,6 +100,7 @@ export const creativeProjects: readonly CreativeProject[] = [
         description:
             "Projection and backdrop design, and calling the show with sound and lighting cues, for JDL Decades of Music.",
         responsibilities: ["Projection / backdrop design", "Called the show with sound and lighting cues"],
+        skills: ["Projection & backdrops", "Sound cues", "Lighting"],
     },
     {
         id: "frozen-jr",
@@ -106,6 +112,7 @@ export const creativeProjects: readonly CreativeProject[] = [
         description:
             "Sound cues and projection cues for JDL Frozen JR.",
         responsibilities: ["Sound cues", "Projection cues"],
+        skills: ["Sound cues", "Projection cues"],
     },
     {
         id: "love-notes-recital",
@@ -118,6 +125,7 @@ export const creativeProjects: readonly CreativeProject[] = [
         description:
             "Projection and backdrop design, and calling the show with sound and lighting cues, for JDL Love Notes – A Night of Music Vocal Recital.",
         responsibilities: ["Projection / backdrop design", "Called the show with sound and lighting cues"],
+        skills: ["Projection & backdrops", "Sound cues", "Lighting"],
     },
     {
         id: "love-of-music-concert",
@@ -130,6 +138,7 @@ export const creativeProjects: readonly CreativeProject[] = [
         description:
             "Projection and backdrop design, and calling the show with sound and lighting cues, for Mark Ezekiel Rivera's Love of Music Concert.",
         responsibilities: ["Projection / backdrop design", "Called the show with sound and lighting cues"],
+        skills: ["Projection & backdrops", "Sound cues", "Lighting"],
     },
     {
         id: "jdl-triple-act-concert",
@@ -142,6 +151,7 @@ export const creativeProjects: readonly CreativeProject[] = [
         description:
             "Video editing and content, projection and backdrop design, and calling the show with sound and lighting cues for the JDL Triple Act – The Next Level Concert.",
         responsibilities: ["Video editing and content", "Projection / backdrop design", "Called the show with sound and lighting cues"],
+        skills: ["Video", "Projection & backdrops", "Sound cues", "Lighting"],
     },
     {
         id: "moana-jr",
@@ -153,6 +163,7 @@ export const creativeProjects: readonly CreativeProject[] = [
         description:
             "Sound cues and projection cues for JDL Moana JR.",
         responsibilities: ["Sound cues", "Projection cues"],
+        skills: ["Sound cues", "Projection cues"],
     },
     {
         id: "jdl-souvenir-playbills",
@@ -163,5 +174,6 @@ export const creativeProjects: readonly CreativeProject[] = [
         description:
             "Souvenir programs created throughout JDL shows, beginning with the first JDL Goes Broadway.",
         responsibilities: ["Souvenir program design"],
+        skills: ["Graphic design"],
     },
 ];

@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import type { KeyboardEvent } from "react";
 import useAnimatedDialog from "../../hooks/useAnimatedDialog";
 import { creativeCategoryDetails } from "../../data/creativeProjects";
@@ -23,6 +23,7 @@ const navButtonClass =
 function CreativeProjectModal({ project, projectSequence, onNavigate, onClose }: CreativeProjectModalProps) {
     const { dialogRef, isClosing, requestClose, handleBackdropClick, handleAnimationEnd } =
         useAnimatedDialog(onClose);
+    const { search } = useLocation();
     const { previous, next } = getAdjacentProjects(projectSequence, project);
     const related = getRelatedProjects(projectSequence, project);
     const currentIndex = projectSequence.findIndex((candidate) => candidate.id === project.id);
@@ -159,7 +160,7 @@ function CreativeProjectModal({ project, projectSequence, onNavigate, onClose }:
                                     {related.map((relatedProject) => (
                                         <li key={relatedProject.id}>
                                             <Link
-                                                to={`/creative/${relatedProject.slug}`}
+                                                to={{ pathname: `/creative/${relatedProject.slug}`, search }}
                                                 replace
                                                 className="text-sm font-medium text-accent theme-transition hover:text-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                                             >
