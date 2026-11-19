@@ -39,6 +39,11 @@ export const creativeProjects: readonly CreativeProject[] = [
         responsibilities: ["Poster design", "Magazine design", "Projection / backdrop design"],
         skills: ["Graphic design", "Projection & backdrops"],
         relatedSlugs: ["jdl-15th-anniversary-logo"],
+        coverImage: { src: "https://drive.google.com/file/d/12VHW84Dn1zX9jKMluls5edRdJbdJMBbA/view?usp=sharing", alt: "JDL 15th Anniversary animated crest" },
+        media: [
+            { type: "video", title: "JDL 15th Anniversary Loop", src: "https://drive.google.com/file/d/12VHW84Dn1zX9jKMluls5edRdJbdJMBbA/view?usp=sharing" },
+            { type: "video", title: "MICO", src: "https://drive.google.com/file/d/1TMReX8TK_Ik1mOlgbsN1_F9ziEPK2_nm/view?usp=sharing" },
+        ],
     },
     {
         id: "jdl-come-alive-music-video",
@@ -126,6 +131,10 @@ export const creativeProjects: readonly CreativeProject[] = [
             "Projection and backdrop design, and calling the show with sound and lighting cues, for JDL Love Notes – A Night of Music Vocal Recital.",
         responsibilities: ["Projection / backdrop design", "Called the show with sound and lighting cues"],
         skills: ["Projection & backdrops", "Sound cues", "Lighting"],
+        coverImage: { src: "https://drive.google.com/file/d/1u_e2vmUIYx7GUqQ75_Fp80Pa6I6xBUn-/view?usp=sharing", alt: "Love Notes title animation" },
+        media: [
+            { type: "video", title: "Love Notes Title Loop", src: "https://drive.google.com/file/d/1u_e2vmUIYx7GUqQ75_Fp80Pa6I6xBUn-/view?usp=sharing" },
+        ],
     },
     {
         id: "love-of-music-concert",
@@ -152,6 +161,10 @@ export const creativeProjects: readonly CreativeProject[] = [
             "Video editing and content, projection and backdrop design, and calling the show with sound and lighting cues for the JDL Triple Act – The Next Level Concert.",
         responsibilities: ["Video editing and content", "Projection / backdrop design", "Called the show with sound and lighting cues"],
         skills: ["Video", "Projection & backdrops", "Sound cues", "Lighting"],
+        media: [
+            { type: "video", title: "Greetings (Updated)", src: "https://drive.google.com/file/d/19eLnBcmPOMkFt1W4NmmoZganUhR31DOj/view?usp=sharing" },
+            { type: "video", title: "MAPA (Updated)", src: "https://drive.google.com/file/d/16bSxO31G43_O5Qza6oYJbd5UQt4-VYJf/view?usp=sharing" },
+        ],
     },
     {
         id: "moana-jr",
