@@ -25,7 +25,7 @@ function CreativeProjectRow({ project, number, animationDelay = 0 }: CreativePro
                 <span className="mt-1 block text-sm leading-5 text-secondary theme-transition">
                     {project.description}
                 </span>
-                <ProjectBadges items={project.responsibilities} className="mt-3" />
+                <ProjectBadges items={project.skills} className="mt-3" />
             </span>
             {project.coverImage ? (
                 <ProjectImage

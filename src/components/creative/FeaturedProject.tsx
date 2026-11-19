@@ -37,10 +37,10 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
                     <p className="mt-4 text-sm leading-6 text-secondary theme-transition sm:text-base sm:leading-7">
                         {project.description}
                     </p>
-                    <ul className="mt-5 flex flex-wrap gap-2" aria-label="Responsibilities">
-                        {project.responsibilities.map((responsibility) => (
-                            <li key={responsibility}>
-                                <ProjectBadge variant="category">{responsibility}</ProjectBadge>
+                    <ul className="mt-5 flex flex-wrap gap-2" aria-label="Skills">
+                        {project.skills.map((skill) => (
+                            <li key={skill}>
+                                <ProjectBadge variant="category">{skill}</ProjectBadge>
                             </li>
                         ))}
                     </ul>

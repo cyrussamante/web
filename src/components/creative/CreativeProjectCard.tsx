@@ -43,7 +43,7 @@ function CreativeProjectCard({ project, aspectClass = "aspect-4/3", animationDel
                 <span className="mt-2 line-clamp-3 text-sm leading-5 text-secondary theme-transition">
                     {project.description}
                 </span>
-                <ProjectBadges items={project.responsibilities} maxItems={3} className="mt-auto pt-4" />
+                <ProjectBadges items={project.skills} maxItems={3} className="mt-auto pt-4" />
             </span>
         </Link>
     );

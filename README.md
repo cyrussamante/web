@@ -132,8 +132,8 @@ Media is optional. Projects without a cover image show a category icon and date 
     featured: false, // only one project should be featured
     description: "One or two factual sentences about the project.",
     overview: ["Optional longer write-up.", "One string per paragraph."], // optional; shown in the modal
-    responsibilities: ["Sound cues", "Projection cues"],
-    skills: ["Sound cues", "Projection cues"], // short labels; become the skill filter chips
+    responsibilities: ["Sound cues", "Projection cues"], // detailed role lines, listed under "My Role" in the modal
+    skills: ["Sound", "Projection"], // short labels; shown as badges and used for the skill filter
 
     // Cover image from Google Drive
     coverImage: {

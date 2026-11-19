@@ -146,7 +146,7 @@ function CreativeProjectModal({ project, projectSequence, onNavigate, onClose }:
                         )}
 
                         <section aria-labelledby="creative-role-heading">
-                            <h3 id="creative-role-heading" className={headingClass}>What I Did</h3>
+                            <h3 id="creative-role-heading" className={headingClass}>My Role</h3>
                             <ul className="mt-4 space-y-3">
                                 {project.responsibilities.map((responsibility) => (
                                     <li key={responsibility} className="flex gap-3 text-sm leading-6 text-secondary theme-transition">
