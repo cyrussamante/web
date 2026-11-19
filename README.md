@@ -7,7 +7,7 @@ My personal portfolio website, built from scratch with React, TypeScript, and Ta
 ## Features
 
 - **Dual portfolio** — `/` is a gateway to two portfolios: **Software Engineering** (`/software`) and **Creative Production** (`/creative`). A Home | Software | Creative navigation is available everywhere.
-- **Creative Production** — a media-first portfolio of live production, projection, sound, lighting, branding, and video work with per-project pages (`/creative/:slug`), galleries, video embeds, and PDF previews. Content is managed in a single typed data file and media can come from Google Drive links.
+- **Creative Production** — a media-first portfolio of live production, projection, sound, lighting, branding, and video work with project detail modals (deep-linkable at `/creative/:slug`), galleries, video embeds, and PDF previews. Content is managed in a single typed data file and media can come from Google Drive links.
 - **Projects** (`/software/projects`) — a filterable, sortable grid of personal and academic projects, each with a detail modal supporting keyboard-friendly left/right navigation between projects, screenshots, technologies, and collaborators.
 - **Experience** (`/software/experience`) — a chronological timeline of professional experience and education, with skill tags per role.
 - **Light/dark theme** — a toggle that respects the user's saved preference (and falls back to their OS preference), with consistent, synchronized color transitions across the entire page.
@@ -97,7 +97,7 @@ public/
 | --- | --- |
 | `/` | Landing page linking to both portfolios |
 | `/software`, `/software/projects`, `/software/experience` | Software Engineering portfolio |
-| `/creative`, `/creative/:slug` | Creative Production portfolio and project pages |
+| `/creative`, `/creative/:slug` | Creative Production portfolio; `/creative/:slug` opens that project modal over the list |
 
 The previous `/projects` and `/experience` URLs redirect to their `/software/...` equivalents.
 

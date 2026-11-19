@@ -1,3 +1,5 @@
+import { useNavigate, useParams } from "react-router";
+import CreativeProjectModal from "../../components/creative/CreativeProjectModal";
 import FeaturedProject from "../../components/creative/FeaturedProject";
 import CreativeProjectCard from "../../components/creative/CreativeProjectCard";
 import CreativeProjectRow from "../../components/creative/CreativeProjectRow";
@@ -8,7 +10,8 @@ import { creativeCategoryDetails, creativeProjects } from "../../data/creativePr
 import usePageMetadata from "../../hooks/usePageMetadata";
 import type { CreativeCategory, CreativeProject } from "../../types/creative";
 import { creativeCategories } from "../../types/creative";
-import { getFeaturedProject, getProjectsByCategory } from "../../utils/creative";
+import { getFeaturedProject, getProjectBySlug, getProjectsByCategory } from "../../utils/creative";
+import NotFound from "../NotFound";
 
 const featuredProject = getFeaturedProject(creativeProjects);
 
@@ -58,11 +61,18 @@ function renderCategoryProjects(category: CreativeCategory, projects: CreativePr
 }
 
 function CreativeHome() {
+    const { slug } = useParams();
+    const navigate = useNavigate();
+    const selectedProject = getProjectBySlug(creativeProjects, slug);
+
     usePageMetadata(
-        "Creative Production",
-        "Creative production portfolio of Cyruss Amante: live event and theatre production, sound, projection, lighting design, graphic design, and video.",
-        { path: "/creative" },
+        selectedProject?.title ?? "Creative Production",
+        selectedProject?.description ??
+            "Creative production portfolio of Cyruss Amante: live event and theatre production, sound, projection, lighting design, graphic design, and video.",
+        { path: selectedProject ? `/creative/${selectedProject.slug}` : "/creative" },
     );
+
+    if (slug && !selectedProject) return <NotFound />;
 
     const sections = creativeCategories
         .map((category) => ({ category, projects: getProjectsByCategory(creativeProjects, category) }))
@@ -116,6 +126,15 @@ function CreativeHome() {
                     </ScrollReveal>
                 </div>
             ))}
+
+            {selectedProject && (
+                <CreativeProjectModal
+                    project={selectedProject}
+                    projectSequence={creativeProjects}
+                    onNavigate={(project) => navigate(`/creative/${project.slug}`, { replace: true })}
+                    onClose={() => navigate("/creative")}
+                />
+            )}
         </main>
     );
 }

@@ -30,6 +30,7 @@ function ImageLightbox({ images, index, title, onIndexChange, onClose }: ImageLi
     }
 
     function handleKeyDown(event: React.KeyboardEvent<HTMLDialogElement>) {
+        event.stopPropagation();
         if (total < 2) return;
         if (event.key === "ArrowLeft") go(-1);
         if (event.key === "ArrowRight") go(1);

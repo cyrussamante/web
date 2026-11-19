@@ -12,7 +12,6 @@ import Home from "./routes/software/Home"
 import Projects from "./routes/software/Projects"
 
 const CreativeHome = lazy(() => import("./routes/creative/CreativeHome"))
-const CreativeProject = lazy(() => import("./routes/creative/CreativeProject"))
 
 function App() {
     return (
@@ -35,8 +34,7 @@ function App() {
                         <Route path="experience" element={<Experience />} />
                     </Route>
                     <Route path="/creative" element={<CreativeLayout />}>
-                        <Route index element={<CreativeHome />} />
-                        <Route path=":slug" element={<CreativeProject />} />
+                        <Route path=":slug?" element={<CreativeHome />} />
                     </Route>
                     <Route path="/projects" element={<Navigate to="/software/projects" replace />} />
                     <Route path="/experience" element={<Navigate to="/software/experience" replace />} />

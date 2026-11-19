@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import type { CreativeProject } from "../../types/creative";
-import ProjectBadge from "../projects/ProjectBadge";
+import ProjectBadges from "../projects/ProjectBadges";
 import ProjectImage from "./ProjectImage";
 
 interface CreativeProjectRowProps {
@@ -19,11 +19,10 @@ function CreativeProjectRow({ project, number, animationDelay = 0 }: CreativePro
             <span className="text-xl font-medium tabular-nums text-accent theme-transition md:text-2xl">{number}</span>
             <span className="min-w-0">
                 <h3 className="text-base font-semibold text-foreground theme-transition">{project.title}</h3>
-                <span className="mt-2 flex flex-wrap gap-1.5">
-                    {project.responsibilities.map((responsibility) => (
-                        <ProjectBadge key={responsibility}>{responsibility}</ProjectBadge>
-                    ))}
+                <span className="mt-1 block text-sm leading-5 text-secondary theme-transition">
+                    {project.description}
                 </span>
+                <ProjectBadges items={project.responsibilities} className="mt-3" />
             </span>
             {project.coverImage ? (
                 <ProjectImage

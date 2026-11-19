@@ -22,7 +22,7 @@ function ProjectMediaGallery({ title, gallery = [], media = [] }: ProjectMediaGa
 
     if (gallery.length === 0 && media.length === 0) {
         return (
-            <div className="h-64 sm:h-80">
+            <div className="h-48">
                 <MediaPlaceholder
                     label="Photos, video, and documents coming soon"
                     devHint="Add images to `gallery` and videos or PDFs to `media` in src/data/creativeProjects.ts."

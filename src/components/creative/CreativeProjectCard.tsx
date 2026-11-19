@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import type { CreativeProject } from "../../types/creative";
-import ProjectBadge from "../projects/ProjectBadge";
+import ProjectBadges from "../projects/ProjectBadges";
 import ProjectImage from "./ProjectImage";
 
 interface CreativeProjectCardProps {
@@ -33,11 +33,10 @@ function CreativeProjectCard({ project, aspectClass = "aspect-4/3", animationDel
                         {"\u2192\uFE0E"}
                     </span>
                 </span>
-                <span className="mt-2 flex flex-wrap gap-1.5 pt-1">
-                    {project.responsibilities.slice(0, 4).map((responsibility) => (
-                        <ProjectBadge key={responsibility}>{responsibility}</ProjectBadge>
-                    ))}
+                <span className="mt-2 line-clamp-3 text-sm leading-5 text-secondary theme-transition">
+                    {project.description}
                 </span>
+                <ProjectBadges items={project.responsibilities} maxItems={3} className="mt-auto pt-4" />
             </span>
         </Link>
     );
